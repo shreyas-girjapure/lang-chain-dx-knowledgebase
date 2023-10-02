@@ -28,7 +28,7 @@ async function getVectoredData(splitterInstance, existingVectorStorefilePath, em
     if (fileExists) {
         vectorStore = await FaissStore.load(
             existingVectorStorefilePath,
-            embedderInstance,
+            embedderInstance
         );
     } else {
         const directoryLoader = new DirectoryLoader(directoryPath, {

@@ -33,14 +33,15 @@ let vectorStore = await getVectoredData(splitter, LOCAL_VECTOR_STORE_PATH, embed
 //     vectorStore.asRetriever({ verbose: true, k: 2 })
 // );
 
-let queryString = "How does sample package.xml looks like , give examples and flag usage";
-let data = await vectorStore.similaritySearch(queryString,5);
+let queryString = "How does sample package.xml looks like , give examples and flag usage if there is information";
+let allowedDocumentLimit = 2;
+let data = await vectorStore.similaritySearch(queryString,allowedDocumentLimit);
 console.log(data)
 let contextArray = data.map(item => item.pageContent)
 let contextString = contextArray.toString();
 
 // let vectorQuery = await embedder.embedQuery(queryString);
-// let data = await vectorStore.similaritySearchVectorWithScore(vectorQuery, 5);
+// let data = await vectorStore.similaritySearchVectorWithScore(vectorQuery, allowedDocumentLimit);
 // console.log(data.length)
 // console.log(data)
 // let contextArray = data.map(item => item[0].pageContent);

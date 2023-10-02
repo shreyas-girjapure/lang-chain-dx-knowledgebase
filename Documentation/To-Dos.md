@@ -35,18 +35,20 @@ This is an AI  bot which will take contextual queries and be a good helper provi
     1. Document loader's setup
     1. Load Only 2
     1. Test out responses.
-1. Add Embedding to documents - **In Progress**
-1. Add a vector DB
+1. Add Embedding to documents - **Done**
+1. Add a vector DB - **Done**
     1. Look into pinecone docs
     1. Add Embbedings to documents
-1. Load vector data into file for efficient Storage
-1. Query Optimization
+1. Load vector data into file for efficient Storage - **Done**
+1. Query Optimization - **Done**
     1. Vectorize query
     1. Check with non vectorized content
-1. Retrieve Query
+1. Retrieve Query - **Done**
     1. Add vector query chain
-1. Prompt Engineer Model
+1. Prompt Engineer Model - **Done**
     1. Add Templates for Human and AI Conversation
+1. How to Reduce embedding cost ?
+1. How to handle rate limits
 1. Display output in console
 1. Choose Frontend setup
 1. Test out locally
