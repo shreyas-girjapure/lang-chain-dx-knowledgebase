@@ -1,57 +1,58 @@
+import { OpenAI } from "langchain/llms/openai";
 import { ChatOpenAI } from "langchain/chat_models/openai";
-import { BufferWindowMemory } from "langchain/memory";
-import { ConversationChain } from "langchain/chains";
-import { ChatPromptTemplate, MessagesPlaceholder } from "langchain/prompts";
+import { OpenAIEmbeddings } from "langchain/embeddings/openai";
+import { RecursiveCharacterTextSplitter } from "langchain/text_splitter"
 
+import { PromptTemplate } from "langchain/prompts"
+import { getVectoredData } from "./vectorise.js"
 import dotenv from "dotenv";
-
-
 dotenv.config();
+
 const OPEN_AI_KEY = process.env.OPEN_AI_KEY;
+const LOCAL_VECTOR_STORE_PATH = "VectorStore";
+const DIRECTORY_PATH = "SFDX-Data/Trained";
 
-// const llm = new ChatOpenAI({
-//     modelName : "gpt-3.5-turbo",
-//     openAIApiKey: OPEN_AI_KEY,
-//     verbose :true
-// })
-
-const model = new ChatOpenAI({
+const model = new OpenAI({
     openAIApiKey: OPEN_AI_KEY,
     verbose: true,
 })
 
+const embedder = new OpenAIEmbeddings({
+    openAIApiKey: OPEN_AI_KEY
+})
 
-const chatPrompt = ChatPromptTemplate.fromMessages([
-    [
-        "system",
-        "The following is a friendly conversation between a human and an AI. The AI is talkative and provides lots of specific details from its context. If the AI does not know the answer to a question, it truthfully says it does not know.",
-    ],
-    new MessagesPlaceholder("history"),
-    ["human", "{input}"],
-]);
-
-const memory = new BufferWindowMemory({ k: 5 });
-const chain = new ConversationChain({
-    memory: memory,
-    prompt: chatPrompt,
-    llm: model,
+const splitter = new RecursiveCharacterTextSplitter({
+    chunkSize: 1500,
+    chunkOverlap: 500,
 });
 
-const response = await chain.call({
-    input: "My name is shreyas"
-});
-const response1 = await chain.call({
-    input: "i live in india"
-});
+let vectorStore = await getVectoredData(splitter, LOCAL_VECTOR_STORE_PATH, embedder, DIRECTORY_PATH)
+
+// const chain = RetrievalQAChain.fromLLM(
+//     model,
+//     vectorStore.asRetriever({ verbose: true, k: 2 })
+// );
+
+let queryString = "How does sample package.xml looks like , give examples and flag usage";
+let data = await vectorStore.similaritySearch(queryString,5);
+console.log(data)
+let contextArray = data.map(item => item.pageContent)
+let contextString = contextArray.toString();
+
+// let vectorQuery = await embedder.embedQuery(queryString);
+// let data = await vectorStore.similaritySearchVectorWithScore(vectorQuery, 5);
+// console.log(data.length)
+// console.log(data)
+// let contextArray = data.map(item => item[0].pageContent);
+// let contextString = contextArray.toString();
+
+console.log(contextArray)
+let systemPrompt = "You are a developer experience assistant You are good at providing helpful commands , their documentation and examples.";
+
+let prompt = PromptTemplate.fromTemplate("Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer Context: {context} \n Question: {question} \n Helpful Answer and Various Examples :" );
+
+let formattedPrompt = await prompt.format({ context: contextString, question: queryString })
+let response = await model.call(formattedPrompt)
 
 
-const response2 = await chain.call({
-    input: "What is my name"
-}
-);
-const response3 = await chain.call({
-    input: "Where do i live"
-}
-);
-
-console.log(response3);
+console.log({ response });

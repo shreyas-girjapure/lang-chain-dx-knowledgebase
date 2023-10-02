@@ -11,7 +11,6 @@ This is an AI  bot which will take contextual queries and be a good helper provi
 ### Plan
 
 1. Front end
-
 1. Back End
     1. Node
     1. Lang-Chain
@@ -31,14 +30,16 @@ This is an AI  bot which will take contextual queries and be a good helper provi
     1. ENV variables
     1. LLM Boilerplate
     1. Test response
-1. Add Memory in conversation - **In Progress**
-1. Load Documents from a directory
+1. Add Memory in conversation - **Done**
+1. Load Documents from a directory - **Done**
     1. Document loader's setup
     1. Load Only 2
     1. Test out responses.
+1. Add Embedding to documents - **In Progress**
 1. Add a vector DB
     1. Look into pinecone docs
     1. Add Embbedings to documents
+1. Load vector data into file for efficient Storage
 1. Query Optimization
     1. Vectorize query
     1. Check with non vectorized content
@@ -52,4 +53,8 @@ This is an AI  bot which will take contextual queries and be a good helper provi
 1. Deploy
 
 ### Future scoped tasks
+1. Add Auth Capability
+1. Add Sessions for Users and Chat history loading capability
+    1. [Local Chat Loading](https://js.langchain.com/docs/modules/memory/how_to/buffer)
+    1. [Chat Loading](https://js.langchain.com/docs/modules/memory/integrations/mongodb)
 1. Look into [Retrieve](https://js.langchain.com/docs/modules/data_connection/retrievers/)
