@@ -27,10 +27,11 @@ This is an AI  bot which will take contextual queries and be a good helper provi
 
 ### Tasks
 
-1. Setup Langchain
+1. Setup Langchain  - **Done**
     1. ENV variables
     1. LLM Boilerplate
     1. Test response
+1. Add Memory in conversation - **In Progress**
 1. Load Documents from a directory
     1. Document loader's setup
     1. Load Only 2
@@ -43,7 +44,6 @@ This is an AI  bot which will take contextual queries and be a good helper provi
     1. Check with non vectorized content
 1. Retrieve Query
     1. Add vector query chain
-1. Add Memory in conversation
 1. Prompt Engineer Model
     1. Add Templates for Human and AI Conversation
 1. Display output in console
