@@ -15,7 +15,7 @@ This is an AI  bot which will take contextual queries and be a good helper provi
     1. Node
     1. Lang-Chain
 1. LLM
-    1. `gpt-3.5-turbo`
+    1. `gpt-3.5-turbo` , `text-davinci-002` in dev environments	
 1. Embedding
     1. `text-embedding-ada-002`
 1. Vector DB / Knowledge base
@@ -30,7 +30,7 @@ This is an AI  bot which will take contextual queries and be a good helper provi
     1. ENV variables
     1. LLM Boilerplate
     1. Test response
-1. Add Memory in conversation - **Done**
+1. Add Memory in conversation - **DISCARDED**
 1. Load Documents from a directory - **Done**
     1. Document loader's setup
     1. Load Only 2
@@ -49,6 +49,7 @@ This is an AI  bot which will take contextual queries and be a good helper provi
     1. Add Templates for Human and AI Conversation
 1. How to Reduce embedding cost ?
 1. How to handle rate limits
+1. Route Queries to either vector db or to general llm
 1. Display output in console
 1. Choose Frontend setup
 1. Test out locally
