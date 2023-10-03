@@ -28,24 +28,19 @@ const splitter = new RecursiveCharacterTextSplitter({
 
 let vectorStore = await getVectoredData(splitter, LOCAL_VECTOR_STORE_PATH, embedder, DIRECTORY_PATH)
 
-// const chain = RetrievalQAChain.fromLLM(
-//     model,
-//     vectorStore.asRetriever({ verbose: true, k: 2 })
-// );
-
 let queryString = "How does sample package.xml looks like , give examples and flag usage if there is information";
-let allowedDocumentLimit = 2;
-let data = await vectorStore.similaritySearch(queryString,allowedDocumentLimit);
-console.log(data)
-let contextArray = data.map(item => item.pageContent)
-let contextString = contextArray.toString();
-
-// let vectorQuery = await embedder.embedQuery(queryString);
-// let data = await vectorStore.similaritySearchVectorWithScore(vectorQuery, allowedDocumentLimit);
-// console.log(data.length)
+let allowedDocumentLimit = 1;
+// let data = await vectorStore.similaritySearch(queryString,allowedDocumentLimit);
 // console.log(data)
-// let contextArray = data.map(item => item[0].pageContent);
+// let contextArray = data.map(item => item.pageContent)
 // let contextString = contextArray.toString();
+
+let vectorQuery = await embedder.embedQuery(queryString);
+let data = await vectorStore.similaritySearchVectorWithScore(vectorQuery, allowedDocumentLimit);
+console.log(data.length)
+console.log(data)
+let contextArray = data.map(item => item[0].pageContent);
+let contextString = contextArray.toString();
 
 console.log(contextArray)
 let systemPrompt = "You are a developer experience assistant You are good at providing helpful commands , their documentation and examples.";
