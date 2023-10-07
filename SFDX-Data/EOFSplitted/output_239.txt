@@ -1,0 +1,40 @@
+
+
+Delete a sandbox.
+
+USAGE
+  $ sfdx org delete sandbox -o <value> [--json] [-p]
+
+FLAGS
+  -o, --target-org=<value>  (required) Sandbox alias or login user.
+  -p, --no-prompt           Don't prompt the user to confirm the deletion.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Delete a sandbox.
+
+  Salesforce CLI marks the org for deletion in the production org that contains
+  the sandbox licenses and then deletes all local references to the org from
+  your computer.
+  Specify a sandbox with either the username you used when you logged into it,
+  or the alias you gave the sandbox when you created it. Run "sfdx org list" to
+  view all your orgs, including sandboxes, and their aliases.
+
+ALIASES
+  $ sfdx env delete sandbox
+
+EXAMPLES
+  Delete a sandbox with alias my-sandbox:
+
+    $ sfdx org delete sandbox --target-org=my-sandbox
+
+  Specify a username instead of an alias:
+
+    $ sfdx org delete sandbox --target-org=myusername@example.com.qa
+
+  Delete the sandbox without prompting to confirm :
+
+    $ sfdx org delete sandbox --target-org=my-sandbox --no-prompt
+

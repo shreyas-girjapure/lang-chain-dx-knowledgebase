@@ -1,0 +1,44 @@
+
+
+Retrieve details about a package version creation request.
+
+USAGE
+  $ sfdx package version create report -v <value> -i <value> [--json] [--api-version
+    <value>]
+
+FLAGS
+  -i, --package-create-request-id=<value>  (required) ID (starts with 08c) of
+                                           the package version creation request
+                                           you want to display.
+  -v, --target-dev-hub=<value>             (required) Username or alias of the
+                                           Dev Hub org.
+  --api-version=<value>                    Override the api version used for api
+                                           requests made by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Retrieve details about a package version creation request.
+
+  Specify the request ID for which you want to view details. If applicable, the
+  command displays errors related to the request.
+
+  To show all requests in the org, run "sfdx package version create list".
+
+ALIASES
+  $ sfdx force package beta version create report
+  $ sfdx force package version create report
+
+EXAMPLES
+  Retrieve details about the package version creation request with the
+  specified ID; uses your default Dev Hub org:
+
+    $ sfdx package version create report --package-create-request-id 08c...
+
+  Retrieve details about the specified package version creation request in the
+  Dev Hub org with username devhub@example.com:
+
+    $ sfdx package version create report --package-create-request-id 08c... \
+      --target-dev-hub devhub@example.com
+

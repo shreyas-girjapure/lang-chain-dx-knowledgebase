@@ -1,0 +1,65 @@
+
+
+Export data from an org into one or more JSON files.
+
+USAGE
+  $ sfdx data export tree -o <value> -q <value> [--json] [--api-version
+    <value>] [-p] [-x <value>] [-d <value>]
+
+FLAGS
+  -d, --output-dir=<value>  Directory in which to generate the JSON files;
+                            default is current directory.
+  -o, --target-org=<value>  (required) Org alias or username to use for the
+                            target org.
+  -p, --plan                Generate multiple sObject tree files and a plan
+                            definition file for aggregated import.
+  -q, --query=<value>       (required) SOQL query, or filepath of a file that
+                            contains the query, to retrieve records.
+  -x, --prefix=<value>      Prefix of generated files.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Export data from an org into one or more JSON files.
+
+  Specify a SOQL query, either directly at the command line or read from a file,
+  to retrieve the data you want to export. The exported data is written to JSON
+  files in sObject tree format, which is a collection of nested, parent-child
+  records with a single root record. Use these JSON files to import data into an
+  org with the "sfdx data import tree" command.
+
+  If your SOQL query references multiple objects, the command generates a single
+  JSON file by default. You can specify the --plan flag to generate separate
+  JSON files for each object and a plan definition file that aggregates them.
+  You then specify just this plan definition file when you import the data into
+  an org.
+
+  The SOQL query can return a maximum of 2,000 records. For more information,
+  see the REST API Developer Guide. (https://developer.salesforce.com/docs/atlas
+  .en-us.api_rest.meta/api_rest/resources_composite_sobject_tree.htm).
+
+ALIASES
+  $ sfdx force data tree export
+
+EXAMPLES
+  Export records retrieved with the specified SOQL query into a single JSON
+  file in the current directory; the command uses your default org:
+
+    $ sfdx data export tree --query "SELECT Id, Name, (SELECT Name, \
+      Address__c FROM Properties__r) FROM Broker__c"
+
+  Export data using a SOQL query in the "query.txt" file and generate JSON
+  files for each object and a plan that aggregates them:
+
+    $ sfdx data export tree --query query.txt --plan
+
+  Prepend "export-demo" before each generated file and generate the files in
+  the "export-out" directory; run the command on the org with alias
+  "my-scratch":
+
+    $ sfdx data export tree --query query.txt --plan --prefix export-demo \
+      --output-dir export-out --target-org my-scratch
+

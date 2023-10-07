@@ -1,0 +1,26 @@
+
+
+List installed plugins.
+
+USAGE
+  $ sfdx plugins [--core]
+
+FLAGS
+  --core  Show core plugins.
+
+DESCRIPTION
+  List installed plugins.
+
+EXAMPLES
+  $ sfdx plugins
+
+TOPICS
+  plugins trust  validate a digital signature for a npm package
+
+COMMANDS
+  plugins inspect    Displays installation properties of a plugin.
+  plugins install    Installs a plugin into the CLI.
+  plugins link       Links a plugin into the CLI for development.
+  plugins uninstall  Removes a plugin from the CLI.
+  plugins update     Update installed plugins
+

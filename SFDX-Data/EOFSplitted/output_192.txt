@@ -1,0 +1,46 @@
+
+
+Promote a package version to released.
+
+USAGE
+  $ sfdx package version promote -v <value> -p <value> [--json] [--api-version
+    <value>] [-n]
+
+FLAGS
+  -n, --no-prompt               Don't prompt to confirm setting the package
+                                version as released.
+  -p, --package=<value>         (required) ID (starts with 04t) or alias of the
+                                package version to promote.
+  -v, --target-dev-hub=<value>  (required) Username or alias of the Dev Hub org.
+  --api-version=<value>         Override the api version used for api requests
+                                made by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Promote a package version to released.
+
+  Supply the ID or alias of the package version you want to promote. Promotes
+  the package version to released status.
+
+ALIASES
+  $ sfdx force package beta version promote
+  $ sfdx force package version promote
+
+EXAMPLES
+  Promote the package version with the specified ID to released; uses your
+  default Dev Hub org:
+
+    $ sfdx package version promote --package 04t...
+
+  Promote the package version with the specified alias to released; uses the
+  Dev Hub org with username devhub@example.com:
+
+    $ sfdx package version promote --package awesome_package_alias \
+      --target-dev-hub devhub@example.com
+
+  Promote the package version with an alias that has spaces to released:
+
+    $ sfdx package version promote --package "Awesome Package Alias"
+

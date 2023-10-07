@@ -1,0 +1,22 @@
+
+
+install Jest unit testing tools for Lightning Web Components.
+
+USAGE
+  $ sfdx force lightning lwc test setup [--json] [--loglevel
+    trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+FLAGS
+  --json
+      format output as json
+
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATA
+  L)
+      [default: warn] logging level for this command invocation
+
+DESCRIPTION
+  install Jest unit testing tools for Lightning Web Components.
+
+EXAMPLES
+  $ sfdx force:lightning:lwc:test:setup
+

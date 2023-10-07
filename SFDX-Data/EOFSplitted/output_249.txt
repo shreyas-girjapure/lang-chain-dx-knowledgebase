@@ -1,0 +1,36 @@
+
+
+Display information about limits in your org.
+
+USAGE
+  $ sfdx limits api display -o <value> [--json] [--api-version <value>]
+
+FLAGS
+  -o, --target-org=<value>  (required) Username or alias of the target org.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Display information about limits in your org.
+
+  For each limit, this command returns the maximum allocation and the remaining
+  allocation based on usage. See this topic for a description of each limit:
+  https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resou
+  rces_limits.htm.
+
+ALIASES
+  $ sfdx force limits api display
+  $ sfdx org list limits
+
+EXAMPLES
+  Display limits in your default org:
+
+    $ sfdx limits api display
+
+  Display limits in the org with alias "my-scratch-org":
+
+    $ sfdx limits api display --target-org my-scratch-org
+

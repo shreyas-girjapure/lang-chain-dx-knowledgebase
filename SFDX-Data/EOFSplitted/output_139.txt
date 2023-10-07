@@ -1,0 +1,32 @@
+
+
+The force:org:delete command is deprecated. Use org:delete:scratch or org:delete:sandbox.
+Delete a scratch or sandbox org.
+
+USAGE
+  $ sfdx force org delete -o <value> [--json] [--api-version <value>] [-p]
+
+FLAGS
+  -o, --target-org=<value>  (required) Username or alias of the target org.
+  -p, --no-prompt           No prompt to confirm deletion.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Delete a scratch or sandbox org.
+
+  Salesforce CLI marks the org for deletion in either the Dev Hub org (for
+  scratch orgs) or production org (for sandboxes)
+  and then deletes all local references to the org from your computer.
+
+  To mark the org for deletion without being prompted to confirm, specify
+  --noprompt.
+
+EXAMPLES
+  $ sfdx force org delete -u me@my.org
+
+  $ sfdx force org delete -u MyOrgAlias -p
+

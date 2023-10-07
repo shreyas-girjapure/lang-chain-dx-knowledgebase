@@ -1,0 +1,37 @@
+
+
+Unset one or more aliases that are currently set on your local computer.
+
+USAGE
+  $ sfdx force alias unset [--json] [-a] [-p]
+
+FLAGS
+  -a, --all        Unset all currently set aliases.
+  -p, --no-prompt  Don't prompt the user for confirmation when unsetting all
+                   aliases.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Unset one or more aliases that are currently set on your local computer.
+
+  Aliases are global, so when you unset one it's no longer available in any
+  Salesforce DX project.
+
+ALIASES
+  $ sfdx force alias unset
+
+EXAMPLES
+  Unset an alias:
+
+    $ sfdx force alias unset my-alias
+
+  Unset multiple aliases with a single command:
+
+    $ sfdx force alias unset my-alias my-other-alias
+
+  Unset all aliases:
+
+    $ sfdx force alias unset --all [--no-prompt]
+

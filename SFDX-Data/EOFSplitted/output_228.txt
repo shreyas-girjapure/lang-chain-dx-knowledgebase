@@ -1,0 +1,58 @@
+
+
+Generate a Lightning Interface.
+
+USAGE
+  $ sfdx lightning generate interface -n <value> [--json] [-t DefaultLightningIntf] [-d
+    <value>] [--api-version <value>]
+
+FLAGS
+  -d, --output-dir=<value>  [default: .] Directory for saving the created files.
+  -n, --name=<value>        (required) Name of the generated Lightning
+                            Interface.
+  -t, --template=<option>   [default: DefaultLightningIntf] Template to use for
+                            file creation.
+                            <options: DefaultLightningIntf>
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Generate a Lightning Interface.
+
+  Generates a Lightning Interface bundle in the specified directory or the
+  current working directory. The bundle consists of multiple files in a folder
+  with the designated name.
+
+ALIASES
+  $ sfdx force lightning interface create
+
+EXAMPLES
+  Generate the metadata files for a Lightning interface bundle called
+  "myinterface" in the current directory:
+
+    $ sfdx lightning generate interface --name myinterface
+
+  Similar to the previous example but generate the files in the
+  "force-app/main/default/aura" directory:
+
+    $ sfdx lightning generate interface --name myinterface --output-dir \
+      force-app/main/default/aura
+
+FLAG DESCRIPTIONS
+  -d, --output-dir=<value>  Directory for saving the created files.
+
+    The location can be an absolute path or relative to the current working
+    directory. The default is the current directory.
+
+  -n, --name=<value>  Name of the generated Lightning Interface.
+
+    The name can be up to 40 characters and must start with a letter.
+
+  -t, --template=DefaultLightningIntf  Template to use for file creation.
+
+    Supplied parameter values or default values are filled into a copy of the
+    template
+

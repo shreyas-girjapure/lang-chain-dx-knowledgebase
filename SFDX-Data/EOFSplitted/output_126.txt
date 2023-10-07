@@ -1,0 +1,57 @@
+
+
+Generate a Lightning test.
+
+USAGE
+  $ sfdx force lightning test create -n <value> [--json] [-t DefaultLightningTest] [-d
+    <value>] [--api-version <value>]
+
+FLAGS
+  -d, --output-dir=<value>  [default: .] Directory for saving the created files.
+  -n, --name=<value>        (required) Name of the generated Lightning Test.
+  -t, --template=<option>   [default: DefaultLightningTest] Template to use for
+                            file creation.
+                            <options: DefaultLightningTest>
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Generate a Lightning test.
+
+  Generates the test in the specified directory or the current working
+  directory. The .resource file and associated metadata file are generated.
+
+ALIASES
+  $ sfdx force lightning test create
+
+EXAMPLES
+  Generate the metadata files for the Lightning test called MyLightningTest in
+  the current directory:
+
+    $ sfdx force lightning test create --name MyLightningTest
+
+  Similar to the previous example but generate the files in the
+  "force-app/main/default/lightningTests" directory:
+
+    $ sfdx force lightning test create --name MyLightningTest --output-dir \
+      force-app/main/default/lightningTests
+
+FLAG DESCRIPTIONS
+  -d, --output-dir=<value>  Directory for saving the created files.
+
+    The location can be an absolute path or relative to the current working
+    directory. The default is the current directory.
+
+  -n, --name=<value>  Name of the generated Lightning Test.
+
+    Name of the new Lightning test; can be up to 40 characters and must start
+    with a letter.
+
+  -t, --template=DefaultLightningTest  Template to use for file creation.
+
+    Supplied parameter values or default values are filled into a copy of the
+    template
+

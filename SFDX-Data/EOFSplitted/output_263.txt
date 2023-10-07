@@ -1,0 +1,72 @@
+
+
+Check the status of a sandbox creation, and log in to it if it's ready.
+
+USAGE
+  $ sfdx org resume sandbox [--json] [-w <value>] [-n <value> | -i <value>] [-l]
+    [-o <value>]
+
+FLAGS
+  -i, --job-id=<value>      Job ID of the incomplete sandbox creation that you
+                            want to check the status of.
+  -l, --use-most-recent     Use the most recent sandbox create request.
+  -n, --name=<value>        Name of the sandbox org.
+  -o, --target-org=<value>  Username or alias of the production org that
+                            contains the sandbox license.
+  -w, --wait=<minutes>      Number of minutes to wait for the sandbox org to be
+                            ready.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Check the status of a sandbox creation, and log in to it if it's ready.
+
+  Sandbox creation can take a long time. If the original "sfdx org create
+  sandbox" command either times out, or you specified the --async flag, the
+  command displays a job ID. Use this job ID to check whether the sandbox
+  creation is complete, and if it is, the command then logs into it.
+
+  You can also use the sandbox name to check the status or the --use-most-recent
+  flag to use the job ID of the most recent sandbox creation.
+
+ALIASES
+  $ sfdx env resume sandbox
+
+EXAMPLES
+  Check the status of a sandbox creation using its name and specify a
+  production org with alias "prodOrg":
+
+    $ sfdx org resume sandbox --name mysandbox --target-org prodOrg
+
+  Check the status using the job ID:
+
+    $ sfdx org resume sandbox --job-id 0GRxxxxxxxx
+
+  Check the status of the most recent sandbox create request:
+
+    $ sfdx org resume sandbox --use-most-recent
+
+FLAG DESCRIPTIONS
+  -i, --job-id=<value>
+
+    Job ID of the incomplete sandbox creation that you want to check the status
+    of.
+
+    The job ID is valid for 24 hours after you start the sandbox creation.
+
+  -o, --target-org=<value>
+
+    Username or alias of the production org that contains the sandbox license.
+
+    When it creates the sandbox org, Salesforce copies the metadata, and
+    optionally data, from your production org to the new sandbox org.
+
+  -w, --wait=<minutes>
+
+    Number of minutes to wait for the sandbox org to be ready.
+
+    If the command continues to run after the wait period, the CLI returns
+    control of the terminal window to you and returns the job ID. To resume
+    checking the sandbox creation, rerun this command
+

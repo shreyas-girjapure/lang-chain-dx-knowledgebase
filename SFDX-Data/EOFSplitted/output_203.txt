@@ -1,0 +1,40 @@
+
+
+Check your local project package directories for forceignored files.
+
+USAGE
+  $ sfdx force source ignored list [--json] [-p <value>]
+
+FLAGS
+  -p, --source-dir=<value>  File or directory of files that the command checks
+                            for foreceignored files.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Check your local project package directories for forceignored files.
+
+  When deploying or retrieving metadata between your local project and an org,
+  you can specify the source files you want to exclude with a .forceignore file.
+  The .forceignore file structure mimics the .gitignore structure. Each line in
+  .forceignore specifies a pattern that corresponds to one or more files. The
+  files typically represent metadata components, but can be any files you want
+  to exclude, such as LWC configuration JSON files or tests.
+
+ALIASES
+  $ sfdx force source ignored list
+
+EXAMPLES
+  List all the files in all package directories that are ignored:
+
+    $ sfdx force source ignored list
+
+  List all the files in a specific directory that are ignored:
+
+    $ sfdx force source ignored list --source-dir force-app
+
+  Check if a particular file is ignored:
+
+    $ sfdx force source ignored list --source-dir package.xml
+

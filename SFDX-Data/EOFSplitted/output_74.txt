@@ -1,0 +1,39 @@
+
+
+Delete a scratch org.
+
+USAGE
+  $ sfdx org delete scratch -o <value> [--json] [-p]
+
+FLAGS
+  -o, --target-org=<value>  (required) Scratch org alias or login user.
+  -p, --no-prompt           Don't prompt the user to confirm the deletion.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Delete a scratch org.
+
+  Salesforce CLI marks the org for deletion in the Dev Hub org and then deletes
+  all local references to the org from your computer.
+  Specify a scratch org with either the username or the alias you gave the
+  scratch org when you created it. Run "sfdx org list" to view all your orgs,
+  including scratch orgs, and their aliases.
+
+ALIASES
+  $ sfdx env delete scratch
+
+EXAMPLES
+  Delete a scratch org with alias my-scratch-org:
+
+    $ sfdx org delete scratch --target-org=my-scratch-org
+
+  Specify a username instead of an alias:
+
+    $ sfdx org delete scratch --target-org=test-123456-abcdefg@example.com
+
+  Delete the scratch org without prompting to confirm :
+
+    $ sfdx org delete scratch --target-org=my-scratch-org --no-prompt
+

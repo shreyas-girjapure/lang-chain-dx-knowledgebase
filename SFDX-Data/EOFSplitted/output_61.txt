@@ -1,0 +1,29 @@
+
+
+Ensures a GitHub repo has correct access to secrets based on its workflows.
+
+USAGE
+  $ sfdx dev configure secrets -r <value> [--json] [-d]
+
+FLAGS
+  -d, --dry-run             Make no changes.
+  -r, --repository=<value>  (required) Github owner/repo.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Ensures a GitHub repo has correct access to secrets based on its workflows.
+
+  Inspects a repo's yaml files and verifies that secrets required are available
+  for the repo (either set at the repo level or shared via organization-level
+  secrets).
+
+  This command requires scope:admin permissions to inspect the org secrets and
+  admin access to the repo to inspect the repo secrets.
+
+EXAMPLES
+  Ensure secrets access for the repo "testPackageRelease", with owner "salesforcecli":
+
+  $ sfdx dev configure secrets --repository salesforcecli/testPackageRelease
+

@@ -1,0 +1,13 @@
+
+
+Search for a command.
+
+USAGE
+  $ sfdx search
+
+DESCRIPTION
+  Search for a command.
+
+  Once you select a command, hit enter and it will show the help for that
+  command
+

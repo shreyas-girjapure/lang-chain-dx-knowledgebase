@@ -1,0 +1,75 @@
+
+
+We plan to deprecate this command in the future. Try using the "project deploy start" and "project deploy report" pair instead.
+Check the status of a metadata deployment.
+
+USAGE
+  $ sfdx force mdapi deploy report -o <value> [--json] [--api-version <value>] [-w
+    <value>] [-i <value>] [--verbose] [--concise] [--resultsdir <value>]
+    [--coverageformatters clover|cobertura|html-spa|html|json|json-summary|lcovo
+    nly|none|teamcity|text|text-summary] [--junit]
+
+FLAGS
+  -i, --jobid=<value>
+      Job ID of the deployment to check; required if you’ve never deployed using
+      Salesforce CLI; defaults to your most recent CLI deployment.
+
+  -o, --target-org=<value>
+      (required) Username or alias of the target org.
+
+  -w, --wait=<value>
+      [default: 0 minutes] Number of minutes to wait for the command to finish;
+      use -1 to poll indefinitely.
+
+  --api-version=<value>
+      Override the api version used for api requests made by this command
+
+  --concise
+      Omit success messages for smaller JSON output.
+
+  --coverageformatters=clover,cobertura,html-spa,html,json,json-summary,lcovonly
+  ,none,teamcity,text,text-summary...
+      Format of the code coverage results.
+
+  --junit
+      Output JUnit test results.
+
+  --resultsdir=<value>
+      Output directory for code coverage and JUnit results; defaults to the deploy
+      ID.
+
+  --verbose
+      Verbose output of deploy results.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Check the status of a metadata deployment.
+
+  Specify the job ID for the deploy you want to check. The job ID is returned by
+  the "force mdapi deploy" command when run without the --wait parameter. You
+  can also specify a wait time (minutes) to check for updates to the deploy
+  status.
+
+EXAMPLES
+  Check the status of the most recent deployment
+
+    $ sfdx force mdapi deploy report
+
+  Check the status of a deploy with job ID 1234 and wait for 10 minutes for
+  the result:
+
+    $ sfdx force mdapi deploy report --jobid 1234 --wait 10
+
+FLAG DESCRIPTIONS
+  -i, --jobid=<value>
+
+    Job ID of the deployment to check; required if you’ve never deployed using
+    Salesforce CLI; defaults to your most recent CLI deployment.
+
+    The job ID (id field value for AsyncResult) of the deployment you want to
+    check. The job ID is required if you haven’t previously deployed using
+    Salesforce CLI. If you deploy using Salesforce CLI and don’t specify a job
+    ID, we use the ID of the most recent metadata deployment
+

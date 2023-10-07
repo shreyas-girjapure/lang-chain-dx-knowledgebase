@@ -1,0 +1,74 @@
+
+
+List all package versions in the Dev Hub org.
+
+USAGE
+  $ sfdx package version list -v <value> [--json] [--api-version <value>] [-c
+    <value>] [--concise] [-m <value>] [-p <value>] [-r] [-o <value>] [--verbose]
+
+FLAGS
+  -c, --created-last-days=<value>   Number of days since the request was
+                                    created, starting at 00:00:00 of first day
+                                    to now. Use 0 for today.
+  -m, --modified-last-days=<value>  Number of days since the items were
+                                    modified, starting at 00:00:00 of first day
+                                    to now. Use 0 for today.
+  -o, --order-by=<value>            Package version fields used to order the
+                                    list.
+  -p, --packages=<value>            Comma-delimited list of packages (aliases or
+                                    0Ho IDs) to list.
+  -r, --released                    Display released versions only
+                                    (IsReleased=true).
+  -v, --target-dev-hub=<value>      (required) Username or alias of the Dev Hub
+                                    org.
+  --api-version=<value>             Override the api version used for api
+                                    requests made by this command
+  --concise                         Display limited package version details.
+  --verbose                         Display extended package version details.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  List all package versions in the Dev Hub org.
+
+  Description
+
+ALIASES
+  $ sfdx force package beta version list
+  $ sfdx force package version list
+
+EXAMPLES
+  List package versions in your default Dev Hub org that were created in the
+  last 3 days; show only the released versions and order the list using the
+  PatchVersion field. Display extended details about each package version:
+
+    $ sfdx package version list --verbose --created-last-days 3 --released \
+      --order-by PatchVersion
+
+  List the released package versions for the two specified packages that were
+  modified today; use the Dev Hub org with username devhub@example.com:
+
+    $ sfdx package version list --packages 0Ho000000000000,0Ho000000000001 \
+      --released --modified-last-days 0 --target-dev-hub devhub@example.com
+
+  List all released package versions in your default Dev Hub org:
+
+    $ sfdx package version list --released
+
+  List package versions that were modified today in your default Dev Hub org;
+  show limited details about each one:
+
+    $ sfdx package version list --concise --modified-last-days 0
+
+  List released package versions that were created in the last 3 days in your
+  default Dev Hub org; show limited details:
+
+    $ sfdx package version list --concise --created-last-days 3 --released
+
+  List released package versions that were modified today for the two packages
+  with specified aliases in your default Dev Hub org:
+
+    $ sfdx package version list --packages exp-mgr,exp-mgr-util --released \
+      --modified-last-days 0
+

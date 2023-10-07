@@ -1,0 +1,57 @@
+
+
+Display details about the metadata types that are enabled for your org.
+
+USAGE
+  $ sfdx org list metadata-types -o <value> [--json] [--api-version <value>] [-f
+    <value>]
+
+FLAGS
+  -f, --output-file=<value>  Pathname of the file in which to write the results.
+  -o, --target-org=<value>   (required) Username or alias of the target org.
+  --api-version=<value>      API version to use; default is the most recent API
+                             version.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Display details about the metadata types that are enabled for your org.
+
+  The information includes Apex classes and triggers, custom objects, custom
+  fields on standard objects, tab sets that define an app, and many other
+  metadata types. Use this information to identify the syntax needed for a
+  <name> element in a manifest file (package.xml).
+
+  The username that you use to connect to the org must have the Modify All Data
+  or Modify Metadata Through Metadata API Functions permission.
+
+ALIASES
+  $ sfdx force mdapi describemetadata
+
+EXAMPLES
+  Display information about all known and enabled metadata types in the org
+  with alias "my-dev-org" using API version 57.0:
+
+    $ sfdx org list metadata-types --api-version 57.0 --target-org \
+      my-dev-org
+
+  Display only the metadata types that aren't yet supported by Salesforce CLI
+  in your default org and write the results to the specified file:
+
+    $ sfdx org list metadata-types --output-file /path/to/outputfilename.txt \
+      --filter-known
+
+FLAG DESCRIPTIONS
+  -f, --output-file=<value>  Pathname of the file in which to write the results.
+
+    Directing the output to a file makes it easier to extract relevant
+    information for your package.xml manifest file. The default output
+    destination is the terminal or command window console.
+
+  --api-version=<value>
+
+    API version to use; default is the most recent API version.
+
+    Override the api version used for api requests made by this command
+

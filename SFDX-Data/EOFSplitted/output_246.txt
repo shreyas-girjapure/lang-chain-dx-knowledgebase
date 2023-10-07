@@ -1,0 +1,46 @@
+
+
+Get details about a scratch org snapshot.
+
+USAGE
+  $ sfdx org get snapshot -v <value> -s <value> [--json] [--api-version
+    <value>]
+
+FLAGS
+  -s, --snapshot=<value>        (required) Name or ID of snapshot to retrieve.
+  -v, --target-dev-hub=<value>  (required) Username or alias of the Dev Hub org.
+  --api-version=<value>         Override the api version used for api requests
+                                made by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Get details about a scratch org snapshot.
+
+  Snapshot creation can take a while. Use this command with the snapshot name or
+  ID to check its creation status. After the status changes to Active, you can
+  use the snapshot to create scratch orgs.
+
+  To create a snapshot, use the "sfdx org create snapshot" command. To retrieve
+  a list of all snapshots, use "sfdx org list snapshot".
+
+ALIASES
+  $ sfdx force org snapshot get
+
+EXAMPLES
+  Get snapshot details using its ID and the default Dev Hub org:
+
+    $ sfdx org get snapshot --snapshot 0Oo...
+
+  Get snapshot details using its name from a Dev Hub org with alias
+  SnapshotDevHub:
+
+    $ sfdx org get snapshot --snapshot Dependencies --target-dev-hub \
+      SnapshotDevHub
+
+FLAG DESCRIPTIONS
+  -s, --snapshot=<value>  Name or ID of snapshot to retrieve.
+
+    The IDs of scratch org snapshots start with 0Oo
+

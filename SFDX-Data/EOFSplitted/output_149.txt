@@ -1,0 +1,38 @@
+
+
+List scratch org snapshots.
+
+USAGE
+  $ sfdx org list snapshot -v <value> [--json] [--api-version <value>]
+
+FLAGS
+  -v, --target-dev-hub=<value>  (required) Username or alias of the Dev Hub org.
+  --api-version=<value>         Override the api version used for api requests
+                                made by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  List scratch org snapshots.
+
+  You can view all the snapshots in a Dev Hub that you have access to. If you’re
+  an admin, you can see all snapshots associated with the Dev Hub org. If you’re
+  a user, you can see only your snapshots unless a Dev Hub admin gives you View
+  All permissions.
+
+  To create a snapshot, use the "sfdx org create snapshot" command. To get
+  details about a snapshot request, use "sfdx org get snapshot".
+
+ALIASES
+  $ sfdx force org snapshot list
+
+EXAMPLES
+  List snapshots in the default Dev Hub:
+
+    $ sfdx org list snapshot
+
+  List snapshots in the Dev Hub with alias SnapshotDevHub:
+
+    $ sfdx org list snapshot --target-dev-hub SnapshotDevHub
+

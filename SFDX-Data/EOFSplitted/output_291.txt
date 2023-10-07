@@ -1,0 +1,23 @@
+
+
+Displays installation properties of a plugin.
+
+USAGE
+  $ sfdx plugins:inspect PLUGIN...
+
+ARGUMENTS
+  PLUGIN  [default: .] Plugin to inspect.
+
+FLAGS
+  -h, --help     Show CLI help.
+  -v, --verbose
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Displays installation properties of a plugin.
+
+EXAMPLES
+  $ sfdx plugins:inspect myplugin 
+

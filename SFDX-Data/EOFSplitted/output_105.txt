@@ -1,0 +1,25 @@
+
+
+List the configuration variables that you've previously set.
+
+USAGE
+  $ sfdx force config list [--json]
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  List the configuration variables that you've previously set.
+
+  Global configuration variables apply to any Salesforce DX project and are
+  always displayed. If you run this command from a project directory, local
+  configuration variables are also displayed.
+
+ALIASES
+  $ sfdx force config list
+
+EXAMPLES
+  List both global configuration variables and those local to your project:
+
+    $ sfdx force config list
+

@@ -1,0 +1,31 @@
+
+
+Delete all local source tracking information.
+
+USAGE
+  $ sfdx project delete tracking -o <value> [--json] [--api-version <value>]
+  [-p]
+
+FLAGS
+  -o, --target-org=<value>  (required) Username or alias of the target org.
+  -p, --no-prompt           Don't prompt for source tracking override
+                            confirmation.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Delete all local source tracking information.
+
+  WARNING: This command deletes or overwrites all existing source tracking
+  files. Use with extreme caution.
+
+  Deletes all local source tracking information. When you next run 'project
+  deploy preview', Salesforce CLI displays all local and remote files as
+  changed, and any files with the same name are listed as conflicts.
+
+ALIASES
+  $ sfdx force source tracking clear
+

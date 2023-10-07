@@ -1,0 +1,29 @@
+
+
+List all org shapes you’ve created.
+
+USAGE
+  $ sfdx org list shape [--json]
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  List all org shapes you’ve created.
+
+  The output includes the alias, username, and ID of the source org, the status
+  of the org shape creation, and more. Use the org ID to update your scratch org
+  configuration file so you can create a scratch org based on this org shape.
+
+ALIASES
+  $ sfdx force org shape list
+
+EXAMPLES
+  List all org shapes you've created:
+
+    $ sfdx org list shape
+
+  List all org shapes in JSON format and write the output to a file:
+
+    $ sfdx org list shape --json > tmp/MyOrgShapeList.json
+

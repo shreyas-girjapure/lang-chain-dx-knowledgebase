@@ -1,0 +1,28 @@
+
+
+Configure a GitHub repo for the GitHub Actions pipeline.
+
+USAGE
+  $ sfdx dev configure repo -r <value> [--json] [-d] [-b <value>]
+
+FLAGS
+  -b, --bot=<value>         [default: SF-CLI-BOT] GitHub login/username for the
+                            bot.
+  -d, --dry-run             Make no changes.
+  -r, --repository=<value>  (required) GitHub owner/repo for which you want to
+                            configure GitHub Actions.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Configure a GitHub repo for the GitHub Actions pipeline.
+
+  Sets up labels and exempts the CLI bot for branch protection and PR rules.
+
+EXAMPLES
+  Configure the repo "testPackageRelease", with owner "salesforcecli", for
+  GitHub Actions.
+
+    $ sfdx dev configure repo --repository salesforcecli/testPackageRelease
+

@@ -1,0 +1,50 @@
+
+
+Display test results for a specific asynchronous test run.
+
+USAGE
+  $ sfdx apex get test -o <value> -i <value> [--json] [--api-version
+    <value>] [-c] [-d <value>] [-r human|tap|junit|json]
+
+FLAGS
+  -c, --code-coverage           Retrieve code coverage results.
+  -d, --output-dir=<value>      Directory in which to store test result files.
+  -i, --test-run-id=<value>     (required) ID of the test run.
+  -o, --target-org=<value>      (required) Username or alias of the target org.
+  -r, --result-format=<option>  [default: human] Format of the results.
+                                <options: human|tap|junit|json>
+  --api-version=<value>         Override the api version used for api requests
+                                made by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Display test results for a specific asynchronous test run.
+
+  Provide a test run ID to display test results for an enqueued or completed
+  asynchronous test run. The test run ID is displayed after running the "sfdx
+  apex test run" command.
+
+ALIASES
+  $ sfdx force apex test report
+
+EXAMPLES
+  Display test results for your default org using a test run ID:
+
+    $ sfdx apex get test --test-run-id <test run id>
+
+  Similar to previous example, but output the result in JUnit format:
+
+    $ sfdx apex get test --test-run-id <test run id> --result-format junit
+
+  Also retrieve code coverage results and output in JSON format:
+
+    $ sfdx apex get test --test-run-id <test run id> --code-coverage --json
+
+  Specify a directory in which to save the test results from the org with the
+  specified username (rather than your default org):
+
+    $ sfdx apex get test --test-run-id <test run id> --code-coverage \
+      --output-dir <path to outputdir> --target-org me@myorg',
+

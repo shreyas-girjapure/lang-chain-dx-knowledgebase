@@ -1,0 +1,172 @@
+
+
+Retrieve metadata from an org to your local project.
+
+USAGE
+  $ sfdx project retrieve start -o <value> [--json] [-a <value>] [-c] [-x <value> |
+    -m <value> | -d <value>] [-n <value>] [--single-package -t <value>] [-w
+    <value>] [-z ] [--zip-file-name <value> ]
+
+FLAGS
+  -a, --api-version=<value>          Target API version for the retrieve.
+  -c, --ignore-conflicts             Ignore conflicts and retrieve and save
+                                     files to your local filesystem, even if
+                                     they overwrite your local changes.
+  -d, --source-dir=<value>...        File paths for source to retrieve from the
+                                     org.
+  -m, --metadata=<value>...          Metadata component names to retrieve.
+  -n, --package-name=<value>...      Package names to retrieve.
+  -o, --target-org=<value>           (required) Login username or alias for the
+                                     target org.
+  -t, --target-metadata-dir=<value>  Directory that will contain the retrieved
+                                     metadata format files or ZIP.
+  -w, --wait=<value>                 [default: 33 minutes] Number of minutes to
+                                     wait for the command to complete and
+                                     display results to the terminal window.
+  -x, --manifest=<value>             File path for the manifest (package.xml)
+                                     that specifies the components to retrieve.
+  -z, --unzip                        Extract all files from the retrieved zip
+                                     file.
+  --single-package                   Indicates that the zip file points to a
+                                     directory structure for a single package.
+  --zip-file-name=<value>            File name to use for the retrieved zip
+                                     file.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Retrieve metadata from an org to your local project.
+
+  You must run this command from within a project.
+
+  Metadata components are retrieved in source format by default. Retrieve them
+  in metadata format by specifying the --target-metadata-dir flag, which
+  retrieves the components into a ZIP file in the specified directory.
+
+  If your org allows source tracking, then this command tracks the changes in
+  your source. Some orgs, such as production org, never allow source tracking.
+  Source tracking is enabled by default on scratch and sandbox orgs; you can
+  disable source tracking when you create the orgs by specifying the
+  --no-track-source flag on the "sfdx org create scratch|sandbox" commands.
+
+  To retrieve multiple metadata components, either use multiple --metadata
+  <name> flags or use a single --metadata flag with multiple names separated by
+  spaces. Enclose names that contain spaces in one set of double quotes. The
+  same syntax applies to --manifest and --source-dir.
+
+ALIASES
+  $ sfdx retrieve metadata
+
+EXAMPLES
+  Retrieve remote changes from your default org:
+
+    $ sfdx project retrieve start
+
+  Retrieve the source files in a directory from an org with alias
+  "my-scratch":
+
+    $ sfdx project retrieve start --source-dir path/to/source --target-org \
+      my-scratch
+
+  Retrieve a specific Apex class and the objects whose source is in a
+  directory (both examples are equivalent):
+
+    $ sfdx project retrieve start --source-dir \
+      path/to/apex/classes/MyClass.cls path/to/source/objects
+    $ sfdx project retrieve start --source-dir \
+      path/to/apex/classes/MyClass.cls --source-dir path/to/source/objects
+
+  Retrieve all Apex classes:
+
+    $ sfdx project retrieve start --metadata ApexClass
+
+  Retrieve a specific Apex class:
+
+    $ sfdx project retrieve start --metadata ApexClass:MyApexClass
+
+  Retrieve all custom objects and Apex classes (both examples are equivalent):
+
+    $ sfdx project retrieve start --metadata CustomObject ApexClass
+    $ sfdx project retrieve start --metadata CustomObject --metadata \
+      ApexClass
+
+  Retrieve all metadata components listed in a manifest:
+
+    $ sfdx project retrieve start --manifest path/to/package.xml
+
+  Retrieve metadata from a package:
+
+    $ sfdx project retrieve start --package-name MyPackageName
+
+  Retrieve metadata from multiple packages, one of which has a space in its
+  name (both examples are equivalent):
+
+    $ sfdx project retrieve start --package-name Package1 "PackageName With \
+      Spaces" Package3
+    $ sfdx project retrieve start --package-name Package1 --package-name \
+      "PackageName With Spaces" --package-name Package3
+
+  Retrieve the metadata components listed in the force-app directory, but
+  retrieve them in metadata format into a ZIP file in the "output" directory:
+
+    $ sfdx project retrieve start --source-dir force-app \
+      --target-metadata-dir output
+
+  Retrieve in metadata format and automatically extract the contents into the
+  "output" directory:
+
+    $ sfdx project retrieve start --source-dir force-app \
+      --target-metadata-dir output --unzip
+
+FLAG DESCRIPTIONS
+  -a, --api-version=<value>  Target API version for the retrieve.
+
+    Use this flag to override the default API version, which is the latest
+    version supported the CLI, with the API version in your package.xml file.
+
+  -c, --ignore-conflicts
+
+    Ignore conflicts and retrieve and save files to your local filesystem, even
+    if they overwrite your local changes.
+
+    This flag applies only to orgs that allow source tracking. It has no effect
+    on orgs that don't allow it, such as production orgs.
+
+  -d, --source-dir=<value>...  File paths for source to retrieve from the org.
+
+    The supplied paths can be to a single file (in which case the operation is
+    applied to only one file) or to a folder (in which case the operation is
+    applied to all source files in the directory and its subdirectories).
+
+  -o, --target-org=<value>  Login username or alias for the target org.
+
+    Overrides your default org.
+
+  -w, --wait=<value>
+
+    Number of minutes to wait for the command to complete and display results to
+    the terminal window.
+
+    If the command continues to run after the wait period, the CLI returns
+    control of the terminal window to you.
+
+  -x, --manifest=<value>
+
+    File path for the manifest (package.xml) that specifies the components to
+    retrieve.
+
+    If you specify this parameter, don’t specify --metadata or --source-dir.
+
+CONFIGURATION VARIABLES
+  target-org       Username or alias of the org that all commands run against by
+                   default. (sf only)
+  org-api-version  API version of your project. Default: API version of your Dev
+                   Hub org.
+
+ENVIRONMENT VARIABLES
+  SF_TARGET_ORG        Username or alias of your default org. Overrides the
+                       target-org configuration variable.
+  SF_USE_PROGRESS_BAR  Set to false to disable the progress bar when running the
+                       metadata deploy command
+

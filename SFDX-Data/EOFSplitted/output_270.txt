@@ -1,0 +1,41 @@
+
+
+Delete a package.
+
+USAGE
+  $ sfdx package delete -v <value> -p <value> [--json] [--api-version
+    <value>] [-n]
+
+FLAGS
+  -n, --no-prompt               Don’t prompt before deleting the package.
+  -p, --package=<value>         (required) ID (starts with 0Ho) or alias of the
+                                package to delete.
+  -v, --target-dev-hub=<value>  (required) Username or alias of the Dev Hub org.
+  --api-version=<value>         Override the api version used for api requests
+                                made by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Delete a package.
+
+  Specify the ID or alias of the package you want to delete.
+
+  Delete unlocked and second-generation managed packages. Before you delete a
+  package, first delete all associated package versions.
+
+ALIASES
+  $ sfdx force package beta delete
+  $ sfdx force package delete
+
+EXAMPLES
+  Delete a package using its alias from your default Dev Hub org:
+
+    $ sfdx package delete --package "Your Package Alias"
+
+  Delete a package using its ID from the specified Dev Hub org:
+
+    $ sfdx package delete --package 0Ho... --target-dev-hub \
+      devhub@example.com
+

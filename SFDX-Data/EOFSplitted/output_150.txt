@@ -1,0 +1,41 @@
+
+
+The "force org status" command has been deprecated and will be removed in version 60.0. Use "org:resume:sandbox" instead.
+Check the status of a sandbox, and if complete, authenticate to it.
+
+USAGE
+  $ sfdx force org status -o <value> -n <value> [--json] [--api-version
+    <value>] [-s] [-a <value>] [-w <value>]
+
+FLAGS
+  -a, --setalias=<value>     Alias for the created or cloned org.
+  -n, --sandboxname=<value>  (required) Name of the sandbox org to check status
+                             for.
+  -o, --target-org=<value>   (required) Username or alias of the target org.
+  -s, --setdefaultusername   Set the created or cloned org as your default.
+  -w, --wait=<value>         [default: 6 minutes] Number of minutes to wait
+                             while polling for status.
+  --api-version=<value>      Override the api version used for api requests made
+                             by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Check the status of a sandbox, and if complete, authenticate to it.
+
+  Use this command to check the status of your sandbox creation or clone and, if
+  the sandbox is ready, authenticate to it.
+
+  Use the --wait (-w) parameter to specify the number of minutes that the
+  command waits for the sandbox creation or clone to complete before returning
+  control of the terminal to you.
+
+  Set the --target-org (-o) parameter to the username or alias of the production
+  org that contains the sandbox license.
+
+EXAMPLES
+  $ sfdx force org status --sandboxname DevSbx1 --setalias MySandbox -u prodOrg
+
+  $ sfdx force org status --sandboxname DevSbx1 --wait 45 --setdefaultusername -u prodOrg
+

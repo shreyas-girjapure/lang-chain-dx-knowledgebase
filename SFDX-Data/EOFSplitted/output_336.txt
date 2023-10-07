@@ -1,0 +1,58 @@
+
+
+Generate a Visualforce Component.
+
+USAGE
+  $ sfdx visualforce generate component -n <value> -l <value> [--json] [-t
+    DefaultVFComponent] [-d <value>] [--api-version <value>]
+
+FLAGS
+  -d, --output-dir=<value>  [default: .] Directory for saving the created files.
+  -l, --label=<value>       (required) Visualforce Component label.
+  -n, --name=<value>        (required) Name of the generated Visualforce
+                            Component.
+  -t, --template=<option>   [default: DefaultVFComponent] Template to use for
+                            file creation.
+                            <options: DefaultVFComponent>
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Generate a Visualforce Component.
+
+  The command generates the .Component file and associated metadata file in the
+  specified directory or the current working directory by default.
+
+ALIASES
+  $ sfdx force visualforce component create
+
+EXAMPLES
+  Generate the metadata files for a Visualforce component in the current
+  directory:
+
+    $ sfdx visualforce generate component --name mycomponent --label mylabel
+
+  Similar to previous example, but generate the files in the directory
+  "force-app/main/default/components":
+
+    $ sfdx visualforce generate component --name mycomponent --label mylabel \
+      --output-dir components
+
+FLAG DESCRIPTIONS
+  -d, --output-dir=<value>  Directory for saving the created files.
+
+    The location can be an absolute path or relative to the current working
+    directory. The default is the current directory.
+
+  -n, --name=<value>  Name of the generated Visualforce Component.
+
+    The name can be up to 40 characters and must start with a letter.
+
+  -t, --template=DefaultVFComponent  Template to use for file creation.
+
+    Supplied parameter values or default values are filled into a copy of the
+    template
+

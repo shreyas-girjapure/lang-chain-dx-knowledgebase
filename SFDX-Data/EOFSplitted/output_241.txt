@@ -1,0 +1,36 @@
+
+
+Delete all org shapes for a target org.
+
+USAGE
+  $ sfdx org delete shape -o <value> [--json] [--api-version <value>] [-p]
+
+FLAGS
+  -o, --target-org=<value>  (required) Username or alias of the target org.
+  -p, --no-prompt           Don't prompt for confirmation.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Delete all org shapes for a target org.
+
+  A source org can have only one active org shape. If you try to create an org
+  shape for a source org that already has one, the previous shape is marked
+  inactive and replaced by a new active shape. If you don’t want to create
+  scratch orgs based on this shape, you can delete the org shape.
+
+ALIASES
+  $ sfdx force org shape delete
+
+EXAMPLES
+  Delete all org shapes for the source org with alias SourceOrg:
+
+    $ sfdx org delete shape --target-org SourceOrg
+
+  Delete all org shapes without prompting:
+
+    $ sfdx org delete shape --target-org SourceOrg --no-prompt
+

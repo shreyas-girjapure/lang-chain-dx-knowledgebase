@@ -1,0 +1,36 @@
+
+
+Create a scratch org configuration (shape) based on the specified source org.
+
+USAGE
+  $ sfdx org create shape -o <value> [--json] [--api-version <value>]
+
+FLAGS
+  -o, --target-org=<value>  (required) Username or alias of the target org.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Create a scratch org configuration (shape) based on the specified source org.
+
+  Scratch org shapes mimic the baseline setup (features, limits, edition, and
+  Metadata API settings) of a source org without the extraneous data and
+  metadata.
+
+  Run "sfdx org list shape" to view the available org shapes and their IDs.
+
+  To create a scratch org from an org shape, include the "sourceOrg" property in
+  the scratch org definition file and set it to the org ID of the source org.
+  Then create a scratch org with the "sfdx force:org:create" command.
+
+ALIASES
+  $ sfdx force org shape create
+
+EXAMPLES
+  Create an org shape for the source org with alias SourceOrg:
+
+    $ sfdx org create shape --target-org SourceOrg
+

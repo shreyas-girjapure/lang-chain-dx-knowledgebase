@@ -1,0 +1,59 @@
+
+
+Salesforce CLI
+
+VERSION
+  sfdx-cli/7.202.7 wsl-x64 node-v20.2.0
+
+USAGE
+  $ sfdx [COMMAND]
+
+TOPICS
+  alias            Use the alias commands to manage your aliases.
+  analytics        Work with analytics assets.
+  apex             Use the apex commands to create Apex classes, execute
+                   anonymous blocks, view your logs, run Apex tests, and view
+                   Apex test results.
+  cmdt             Generate custom metadata types and their records.
+  community        Create and publish an Experience Cloud site.
+  config           Commands to configure Salesforce CLI.
+  data             Manage records in your org.
+  deploy           Deploy a project interactively to any Salesforce environment.
+  dev              Audit messages in a plugin's messages directory to locate
+                   unused messages and missing messages that have references in
+                   source code.
+  force            Legacy commands for backward compatibility.
+  info             Access Salesforce CLI information from the command line.
+  lightning        Work with Lightning Web and Aura components.
+  limits           Display an org’s limits.
+  org              Commands to manage org shapes and snapshots.
+  package          Commands to develop and install unlocked packages and managed
+                   2GP packages.
+  package1         Commands to develop first-generation managed and unmanaged
+                   packages.
+  plugins          list installed plugins
+  project          Work with projects, such as deploy and retrieve metadata.
+  scanner          scan code to detect code quality issues and security
+                   vulnerabilities
+  schema           Generate metadata source files for a new custom field on a
+                   specified object.
+  sobject          Commands to interact with Salesforce objects.
+  static-resource  Work with static resources.
+  update           update the sfdx CLI
+  version
+  visualforce      Work with Visualforce components.
+
+COMMANDS
+  autocomplete  display autocomplete installation instructions
+  commands      list all the commands
+  deploy        Deploy a project interactively to any Salesforce environment.
+  doctor        Gather CLI configuration data and run diagnostic tests to
+                discover and report potential problems in your environment.
+  help          Display help for sfdx.
+  plugins       List installed plugins.
+  search        Search for a command.
+  update        update the sfdx CLI
+  version
+  whatsnew      Display Salesforce CLI release notes on the command line.
+  which         Show which plugin a command is in
+

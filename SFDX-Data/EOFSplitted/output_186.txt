@@ -1,0 +1,190 @@
+
+
+Create a package version in the Dev Hub org.
+
+USAGE
+  $ sfdx package version create -v <value> [--json] [--api-version <value>] [-b
+    <value>] [-c | --skip-validation] [-f <value>] [-k <value>] [-x] [-p
+    <value>] [-d <value>] [--post-install-script <value>] [--post-install-url
+    <value>] [--releasenotes-url <value>] [--skip-ancestor-check] [-t <value>]
+    [--uninstall-script <value>] [-e <value>] [-a <value>] [-n <value>] [-w
+    <value>] [--language <value>] [--verbose]
+
+FLAGS
+  -a, --version-name=<value>         Name of the package version to be created;
+                                     overrides the sfdx-project.json value.
+  -b, --branch=<value>               Name of the branch in your source control
+                                     system that the package version is based
+                                     on.
+  -c, --code-coverage                Calculate and store the code coverage
+                                     percentage by running the packaged Apex
+                                     tests included in this package version.
+  -d, --path=<value>                 Path to the directory that contains the
+                                     contents of the package.
+  -e, --version-description=<value>  Description of the package version to be
+                                     created; overrides the sfdx-project.json
+                                     value.
+  -f, --definition-file=<value>      Path to a definition file similar to
+                                     scratch org definition file that contains
+                                     the list of features and org preferences
+                                     that the metadata of the package version
+                                     depends on.
+  -k, --installation-key=<value>     Installation key for key-protected package.
+                                     (either --installation-key or
+                                     --installation-key-bypass is required)
+  -n, --version-number=<value>       Version number of the package version to be
+                                     created; overrides the sfdx-project.json
+                                     value.
+  -p, --package=<value>              ID (starts with 0Ho) or alias of the
+                                     package to create a version of.
+  -t, --tag=<value>                  Package version’s tag.
+  -v, --target-dev-hub=<value>       (required) Username or alias of the Dev Hub
+                                     org.
+  -w, --wait=<value>                 [default: 0 minutes] Number of minutes to
+                                     wait for the package version to be created.
+  -x, --installation-key-bypass      Bypass the installation key requirement.
+                                     (either --installation-key or
+                                     --installation-key-bypass is required)
+  --api-version=<value>              Override the api version used for api
+                                     requests made by this command
+  --language=<value>                 Language for the package.
+  --post-install-script=<value>      Name of the post-install script; applies to
+                                     managed packages only.
+  --post-install-url=<value>         Post-install instructions URL.
+  --releasenotes-url=<value>         Release notes URL.
+  --skip-ancestor-check              Overrides ancestry requirements, which
+                                     allows you to specify a package ancestor
+                                     that isn’t the highest released package
+                                     version.
+  --skip-validation                  Skip validation during package version
+                                     creation; you can’t promote unvalidated
+                                     package versions.
+  --uninstall-script=<value>         Uninstall script name; applies to managed
+                                     packages only.
+  --verbose                          Display verbose command output.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Create a package version in the Dev Hub org.
+
+  The package version is based on the package contents in the specified
+  directory.
+
+  To retrieve details about a package version create request, including status
+  and package version ID (04t), run "sfdx package version create report -i
+  08c...".
+
+  We recommend that you specify the --installation-key parameter to protect the
+  contents of your package and to prevent unauthorized installation of your
+  package.
+
+  To list package version creation requests in the org, run "sfdx package
+  version create list".
+  To promote a package version to released, you must use the --code-coverage
+  parameter. The package must also meet the code coverage requirements. This
+  requirement applies to both managed and unlocked packages.
+
+  We don’t calculate code coverage for org-dependent unlocked packages, or for
+  package versions that specify --skip-validation.
+
+ALIASES
+  $ sfdx force package beta version create
+  $ sfdx force package version create
+
+EXAMPLES
+  Create a package version from the contents of the "common" directory and
+  give it an installation key of "password123"; uses your default Dev Hub org:
+
+    $ sfdx package version create --path common --installation-key \
+      password123
+
+  Create a package version from a package with the specified alias; uses the
+  Dev Hub org with username devhub@example.com:
+
+    $ sfdx package version create --package "Your Package Alias" \
+      --installation-key password123 --target-dev-hub devhub@example.com
+
+  Create a package version from a package with the specified ID:
+
+    $ sfdx package version create --package 0Ho... --installation-key \
+      password123
+
+  Create a package version and skip the validation step:
+
+    $ sfdx package version create --path common --installation-key \
+      password123 --skip-validation
+
+FLAG DESCRIPTIONS
+  -c, --code-coverage
+
+    Calculate and store the code coverage percentage by running the packaged
+    Apex tests included in this package version.
+
+    Before you can promote and release a managed or unlocked package version,
+    the Apex code must meet a minimum 75% code coverage requirement. We don’t
+    calculate code coverage for org-dependent unlocked packages or for package
+    versions that specify --skip-validation.
+
+  -x, --installation-key-bypass
+
+    Bypass the installation key requirement. (either --installation-key or
+    --installation-key-bypass is required)
+
+    If you bypass this requirement, anyone can install your package.
+
+  --language=<value>  Language for the package.
+
+    Specify the language using a language code listed under "Supported
+    Languages" in Salesforce Help. If no language is specified, the language
+    defaults to the language of the Dev Hub user who created the package.
+
+  --post-install-script=<value>
+
+    Name of the post-install script; applies to managed packages only.
+
+    The post-install script is an Apex class within this package that is run in
+    the installing org after installations or upgrades of this package version.
+
+  --post-install-url=<value>  Post-install instructions URL.
+
+    The contents of the post-installation instructions URL are displayed in the
+    UI after installation of the package version.
+
+  --releasenotes-url=<value>  Release notes URL.
+
+    This link is displayed in the package installation UI to provide release
+    notes for this package version to subscribers.
+
+  --skip-validation
+
+    Skip validation during package version creation; you can’t promote
+    unvalidated package versions.
+
+    Skips validation of dependencies, package ancestors, and metadata during
+    package version creation. Skipping validation reduces the time it takes to
+    create a new package version, but you can promote only validated package
+    versions. Skipping validation can suppress important errors that can surface
+    at a later stage. You can specify skip validation or code coverage, but not
+    both. Code coverage is calculated during validation.
+
+  --uninstall-script=<value>
+
+    Uninstall script name; applies to managed packages only.
+
+    The uninstall script is an Apex class within this package that is run in the
+    installing org after uninstallations of this package.
+
+  --verbose  Display verbose command output.
+
+    Display verbose command output. When polling for the status of the creation,
+    this will output status and timeout data on a separate line for each poll
+    request, which is useful in CI systems where timeouts can occur with long
+    periods of no output from commands.
+
+COMMANDS
+  package version create list    List package version creation requests.
+  package version create report  Retrieve details about a package version
+                                 creation request
+

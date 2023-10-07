@@ -1,0 +1,75 @@
+
+
+Create a first-generation package version in the release org.
+
+USAGE
+  $ sfdx package1 version create -o <value> -i <value> -n <value> [--json]
+    [--api-version <value>] [-d <value>] [-v <value>] [-m] [-r <value>] [-p
+    <value>] [-k <value>] [-w <value>]
+
+FLAGS
+  -d, --description=<value>        Package version description.
+  -i, --package-id=<value>         (required) ID of the metadata package (starts
+                                   with 033) of which you’re creating a new
+                                   version.
+  -k, --installation-key=<value>   Installation key for key-protected package
+                                   (default: null).
+  -m, --managed-released           Create a managed package version.
+  -n, --name=<value>               (required) Package version name.
+  -o, --target-org=<value>         (required) Username or alias of the target
+                                   org.
+  -p, --post-install-url=<value>   Post install URL.
+  -r, --release-notes-url=<value>  Release notes URL.
+  -v, --version=<value>            Package version in major.minor format, for
+                                   example, 3.2.
+  -w, --wait=<value>               Minutes to wait for the package version to be
+                                   created (default: 2 minutes).
+  --api-version=<value>            Override the api version used for api
+                                   requests made by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Create a first-generation package version in the release org.
+
+  The package version is based on the contents of the specified metadata
+  package. Omit --managed-released if you want to create an unmanaged package
+  version.
+
+ALIASES
+  $ sfdx force package1 beta version create
+  $ sfdx force package1 version create
+
+EXAMPLES
+  Create a first-generation package version from the package with the
+  specified ID and name the package version "example"; use your default org:
+
+    $ sfdx package1 version create --package-id 033... --name example
+
+  Same as previous example, but provide a description and wait for 30 minutes
+  for the package version to be created; use the specified org:
+
+    $ sfdx package1 version create --package-id 033... --name example \
+      --description "example description" --wait 30 --target-org \
+      myorg@example.com
+
+FLAG DESCRIPTIONS
+  -m, --managed-released  Create a managed package version.
+
+    To create a beta version, don’t include this parameter.
+
+  -p, --post-install-url=<value>  Post install URL.
+
+    The contents of the post-installation instructions URL are displayed in the
+    UI after installation of the package version.
+
+  -r, --release-notes-url=<value>  Release notes URL.
+
+    This link is displayed in the package installation UI to provide release
+    notes for this package version to subscribers.
+
+COMMANDS
+  package1 version create get  Retrieve the status of a package version creation
+                               request
+

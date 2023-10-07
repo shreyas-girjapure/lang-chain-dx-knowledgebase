@@ -1,0 +1,181 @@
+
+
+Validate a metadata deployment without actually executing it.
+
+USAGE
+  $ sfdx project deploy validate -o <value> [--json] [-a <value>] [--async]
+    [--concise | --verbose] [-x <value>] [-m <value>] [-d <value>]
+    [--single-package --metadata-dir <value>] [-t <value>] [-l
+    RunAllTestsInOrg|RunLocalTests|RunSpecifiedTests] [-w <value>]
+
+FLAGS
+  -a, --api-version=<value>    Target API version for the validation.
+  -d, --source-dir=<value>...  Path to the local source files to validate for
+                               deployment.
+  -l, --test-level=<option>    [default: RunLocalTests] Deployment Apex testing
+                               level.
+                               <options:
+                               RunAllTestsInOrg|RunLocalTests|RunSpecifiedTests>
+  -m, --metadata=<value>...    Metadata component names to validate for
+                               deployment.
+  -o, --target-org=<value>     (required) Login username or alias for the target
+                               org.
+  -t, --tests=<value>...       Apex tests to run when --test-level is
+                               RunSpecifiedTests.
+  -w, --wait=<minutes>         [default: 33 minutes] Number of minutes to wait
+                               for the command to complete and display results.
+  -x, --manifest=<value>       Full file path for manifest (package.xml) of
+                               components to validate for deployment.
+  --async                      Run the command asynchronously.
+  --concise                    Show concise output of the validation result.
+  --metadata-dir=<value>       Root of directory or zip file of metadata
+                               formatted files to deploy.
+  --single-package             Indicates that the metadata zip file points to a
+                               directory structure for a single package.
+  --verbose                    Show verbose output of the validation result.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Validate a metadata deployment without actually executing it.
+
+  Use this command to verify whether a deployment will succeed without actually
+  deploying the metadata to your org. This command is similar to "sfdx project
+  deploy start", except you're required to run Apex tests, and the command
+  returns a job ID rather than executing the deployment. If the validation
+  succeeds, then you pass this job ID to the "sfdx project deploy quick" command
+  to actually deploy the metadata. This quick deploy takes less time because it
+  skips running Apex tests. The job ID is valid for 10 days from when you
+  started the validation. Validating first is useful if the deployment to your
+  production org take several hours and you don’t want to risk a failed deploy.
+
+  You must run this command from within a project.
+
+  This command doesn't support source-tracking. When you quick deploy with the
+  resulting job ID, the source you deploy overwrites the corresponding metadata
+  in your org.
+
+  To validate the deployment of multiple metadata components, either set
+  multiple --metadata <name> flags or a single --metadata flag with multiple
+  names separated by spaces. Enclose names that contain spaces in one set of
+  double quotes. The same syntax applies to --manifest and --source-dir.
+
+ALIASES
+  $ sfdx deploy metadata validate
+
+EXAMPLES
+  NOTE: These examples focus on validating large deployments. See the help for "sfdx project deploy start" for examples of deploying smaller sets of metadata which you can also use to validate.
+
+  Validate the deployment of all source files in a directory to the default
+  org:
+
+    $ sfdx project deploy validate --source-dir path/to/source
+
+  Asynchronously validate the deployment and run all tests in the org with
+  alias "my-prod-org"; command immediately returns the job ID:
+
+    $ sfdx project deploy validate --source-dir path/to/source --async \
+      --test-level RunAllTestsInOrg --target-org my-prod-org
+
+  Validate the deployment of all components listed in a manifest:
+
+    $ sfdx project deploy validate --manifest path/to/package.xml
+
+FLAG DESCRIPTIONS
+  -a, --api-version=<value>  Target API version for the validation.
+
+    Use this flag to override the default API version with the API version of
+    your package.xml file. The default API version is the latest version
+    supported by the CLI.
+
+  -d, --source-dir=<value>...
+
+    Path to the local source files to validate for deployment.
+
+    The supplied path can be to a single file (in which case the operation is
+    applied to only one file) or to a folder (in which case the operation is
+    applied to all metadata types in the directory and its subdirectories).
+
+    If you specify this flag, don’t specify --metadata or --manifest.
+
+  -l, --test-level=RunAllTestsInOrg|RunLocalTests|RunSpecifiedTests
+
+    Deployment Apex testing level.
+
+    Valid values are:
+
+    - RunSpecifiedTests — Runs only the tests that you specify with the
+    --run-tests flag. Code coverage requirements differ from the default
+    coverage requirements when using this test level. Executed tests must
+    comprise a minimum of 75% code coverage for each class and trigger in the
+    deployment package. This coverage is computed for each class and trigger
+    individually and is different than the overall coverage percentage.
+
+    - RunLocalTests — All tests in your org are run, except the ones that
+    originate from installed managed and unlocked packages. This test level is
+    the default.
+
+    - RunAllTestsInOrg — All tests in your org are run, including tests of
+    managed packages.
+
+  -o, --target-org=<value>  Login username or alias for the target org.
+
+    Overrides your default org.
+
+  -t, --tests=<value>...
+
+    Apex tests to run when --test-level is RunSpecifiedTests.
+
+    If a test name contains a space, enclose it in double quotes.
+    For multiple test names, use one of the following formats:
+
+    - Repeat the flag for multiple test names: --tests Test1 --tests Test2
+    --tests "Test With Space"
+    - Separate the test names with spaces: --tests Test1 Test2 "Test With Space"
+
+  -w, --wait=<minutes>
+
+    Number of minutes to wait for the command to complete and display results.
+
+    If the command continues to run after the wait period, the CLI returns
+    control of the terminal window to you and returns the job ID. To resume
+    watching the validation, run "sfdx project deploy resume". To check the
+    status of the validation, run "sfdx project deploy report".
+
+  -x, --manifest=<value>
+
+    Full file path for manifest (package.xml) of components to validate for
+    deployment.
+
+    All child components are included. If you specify this flag, don’t specify
+    --metadata or --source-dir.
+
+  --async  Run the command asynchronously.
+
+    The command immediately returns the job ID and control of the terminal to
+    you. This way, you can continue to use the CLI. To resume watching the
+    validation, run "sfdx project deploy resume". To check the status of the
+    validation, run "sfdx project deploy report".
+
+CONFIGURATION VARIABLES
+  target-org       Username or alias of the org that all commands run against by
+                   default. (sf only)
+  org-api-version  API version of your project. Default: API version of your Dev
+                   Hub org.
+
+ENVIRONMENT VARIABLES
+  SF_TARGET_ORG        Username or alias of your default org. Overrides the
+                       target-org configuration variable.
+  SF_USE_PROGRESS_BAR  Set to false to disable the progress bar when running the
+                       metadata deploy command.
+
+ERROR CODES
+  Succeeded (0)          The deploy succeeded.
+  Canceled (1)           The deploy was canceled.
+  Failed (1)             The deploy failed.
+  SucceededPartial (68)  The deploy partially succeeded.
+  InProgress (69)        The deploy is in progress.
+  Pending (69)           The deploy is pending.
+  Canceling (69)         The deploy is being canceled
+

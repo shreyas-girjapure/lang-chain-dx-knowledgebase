@@ -1,0 +1,52 @@
+
+
+Uninstall a second-generation package from the target org.
+
+USAGE
+  $ sfdx package uninstall -o <value> -p <value> [--json] [--api-version
+    <value>] [-w <value>]
+
+FLAGS
+  -o, --target-org=<value>  (required) Username or alias of the target org.
+  -p, --package=<value>     (required) ID (starts with 04t) or alias of the
+                            package version to uninstall.
+  -w, --wait=<value>        [default: 0 minutes] Number of minutes to wait for
+                            uninstall status.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Uninstall a second-generation package from the target org.
+
+  Specify the package ID for a second-generation package.
+
+  To list the org’s installed packages, run "sfdx package installed list".
+
+  To uninstall a first-generation package, from Setup, enter Installed Packages
+  in the Quick Find box, then select Installed Packages.
+
+ALIASES
+  $ sfdx force package beta uninstall
+  $ sfdx force package uninstall
+
+EXAMPLES
+  Uninstall a package with specified ID from an org with username
+  me@example.com:
+
+    $ sfdx package uninstall --package 04t... --target-org me@example.com
+
+  Uninstall a package with the specified alias from your default org:
+
+    $ sfdx package uninstall --package undesirable_package_alias
+
+  Uninstall a package with an alias that contains spaces from your default
+  org:
+
+    $ sfdx package uninstall --package "Undesirable Package Alias"
+
+COMMANDS
+  package uninstall report  Retrieve the status of a package uninstall request
+

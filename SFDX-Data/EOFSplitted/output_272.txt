@@ -1,0 +1,34 @@
+
+
+Retrieve the status of a package installation request.
+
+USAGE
+  $ sfdx package install report -o <value> -i <value> [--json] [--api-version
+    <value>]
+
+FLAGS
+  -i, --request-id=<value>  (required) ID of the package install request you
+                            want to check; starts with 0Hf.
+  -o, --target-org=<value>  (required) Username or alias of the target org.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+ALIASES
+  $ sfdx force package beta install report
+  $ sfdx force package install report
+
+EXAMPLES
+  Retrieve the status of a package installation request with the specified ID
+  on your default org:
+
+    $ sfdx package install report --request-id 0Hf...
+
+  Similar to previous example, except use the org with username
+  me@example.com:
+
+    $ sfdx package install report --request-id 0Hf... --target-org \
+      me@example.com
+

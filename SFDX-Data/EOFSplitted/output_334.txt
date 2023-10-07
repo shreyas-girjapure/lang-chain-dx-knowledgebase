@@ -1,0 +1,34 @@
+
+
+update the sfdx CLI
+
+USAGE
+  $ sfdx update [CHANNEL] [-a] [-v <value> | -i] [--force]
+
+FLAGS
+  -a, --available        Install a specific version.
+  -i, --interactive      Interactively select version to install. This is
+                         ignored if a channel is provided.
+  -v, --version=<value>  Install a specific version.
+  --force                Force a re-download of the requested version.
+
+DESCRIPTION
+  update the sfdx CLI
+
+EXAMPLES
+  Update to the stable channel:
+
+    $ sfdx update stable
+
+  Update to a specific version:
+
+    $ sfdx update --version 1.0.0
+
+  Interactively select version:
+
+    $ sfdx update --interactive
+
+  See available versions:
+
+    $ sfdx update --available
+

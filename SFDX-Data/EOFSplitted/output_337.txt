@@ -1,0 +1,48 @@
+
+
+Generate a Visualforce Page.
+
+USAGE
+  $ sfdx visualforce generate page -n <value> -l <value> [--json] [-d <value>]
+    [--api-version <value>]
+
+FLAGS
+  -d, --output-dir=<value>  [default: .] Directory for saving the created files.
+  -l, --label=<value>       (required) Visualforce Page label.
+  -n, --name=<value>        (required) Name of the generated Visualforce Page.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Generate a Visualforce Page.
+
+  The command generates the .Page file and associated metadata file in the
+  specified directory or the current working directory by default.
+
+ALIASES
+  $ sfdx force visualforce page create
+
+EXAMPLES
+  Generate the metadata files for a Visualforce page in the current directory:
+
+    $ sfdx visualforce generate page --name mypage --label mylabel
+
+  Similar to previous example, but generate the files in the directory
+  "force-app/main/default/pages":
+
+    $ sfdx visualforce generate page --name mypage --label mylabel \
+      --output-dir pages
+
+FLAG DESCRIPTIONS
+  -d, --output-dir=<value>  Directory for saving the created files.
+
+    The location can be an absolute path or relative to the current working
+    directory. The default is the current directory.
+
+  -n, --name=<value>  Name of the generated Visualforce Page.
+
+    The name can be up to 40 characters and must start with a letter
+

@@ -1,0 +1,36 @@
+
+
+List all packages in the Dev Hub org.
+
+USAGE
+  $ sfdx package list -v <value> [--json] [--api-version <value>]
+    [--verbose]
+
+FLAGS
+  -v, --target-dev-hub=<value>  (required) Username or alias of the Dev Hub org.
+  --api-version=<value>         Override the api version used for api requests
+                                made by this command
+  --verbose                     Display extended package detail.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  List all packages in the Dev Hub org.
+
+  Description
+
+ALIASES
+  $ sfdx force package beta list
+  $ sfdx force package list
+
+EXAMPLES
+  List all packages in the specified Dev Hub org:
+
+    $ sfdx package list --target-dev-hub devhub@example.com
+
+  List all packages details in the specified Dev Hub org, and show extended
+  details about each package:
+
+    $ sfdx package list --target-dev-hub devhub@example.com --verbose
+

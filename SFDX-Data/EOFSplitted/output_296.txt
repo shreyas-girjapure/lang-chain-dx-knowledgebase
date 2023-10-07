@@ -1,0 +1,21 @@
+
+
+Removes a plugin from the CLI.
+
+USAGE
+  $ sfdx plugins:uninstall PLUGIN...
+
+ARGUMENTS
+  PLUGIN  plugin to uninstall
+
+FLAGS
+  -h, --help     Show CLI help.
+  -v, --verbose
+
+DESCRIPTION
+  Removes a plugin from the CLI.
+
+ALIASES
+  $ sfdx plugins unlink
+  $ sfdx plugins remove
+

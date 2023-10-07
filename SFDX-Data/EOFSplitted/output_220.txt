@@ -1,0 +1,28 @@
+
+
+This command is in beta.
+
+Generate metadata source files for a new platform event.
+
+USAGE
+  $ sfdx generate metadata platformevent -l <value>
+
+FLAGS
+  -l, --label=<value>  (required) The platform event's label.
+
+DESCRIPTION
+  Generate metadata source files for a new platform event.
+
+  This command is interactive and must be run in a Salesforce DX project
+  directory. You're required to specify the event's label with the "--label"
+  flag. The command uses this label to provide intelligent suggestions for other
+  event properties, such as its API name.
+
+ALIASES
+  $ sfdx generate metadata platformevent
+
+EXAMPLES
+  Create a platform event with the specified label:
+
+    $ sfdx generate metadata platformevent --label "My Platform Event"
+

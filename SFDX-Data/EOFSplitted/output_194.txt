@@ -1,0 +1,56 @@
+
+
+Update a package version.
+
+USAGE
+  $ sfdx package version update -v <value> -p <value> [--json] [--api-version
+    <value>] [-a <value>] [-e <value>] [-b <value>] [-t <value>] [-k <value>]
+
+FLAGS
+  -a, --version-name=<value>         New package version name.
+  -b, --branch=<value>               New package version branch.
+  -e, --version-description=<value>  New package version description.
+  -k, --installation-key=<value>     New installation key for key-protected
+                                     package (default: null)
+  -p, --package=<value>              (required) ID (starts with 04t) or alias of
+                                     the package to update a version of.
+  -t, --tag=<value>                  New package version tag.
+  -v, --target-dev-hub=<value>       (required) Username or alias of the Dev Hub
+                                     org.
+  --api-version=<value>              Override the api version used for api
+                                     requests made by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Update a package version.
+
+  Specify a new value for each option you want to update.
+
+  To display details about a package version, run "sfdx package version
+  display".
+
+ALIASES
+  $ sfdx force package beta version update
+  $ sfdx force package version update
+
+EXAMPLES
+  Update the package version that has the specified alias (that contains
+  spaces) with a new installation key "password123"; uses your default Dev Hub
+  org:
+
+    $ sfdx package version update --package "Your Package Alias" \
+      --installation-key password123
+
+  Update the package version that has the specified ID with a new branch and
+  tag; use the Dev Hub org with username devhub@example.com:
+
+    $ sfdx package version update --package 04t... --branch main --tag \
+      'Release 1.0.7' --target-dev-hub devhub@example.com
+
+  Update the package version that has the specified ID with a new description:
+
+    $ sfdx package version update --package 04t... --version-description \
+      "New Package Version Description"
+

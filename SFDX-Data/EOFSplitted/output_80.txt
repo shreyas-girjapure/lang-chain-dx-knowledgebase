@@ -1,0 +1,41 @@
+
+
+Generate a simple Analytics template.
+
+USAGE
+  $ sfdx force analytics template create -n <value> [--json] [-d <value>] [--api-version
+    <value>]
+
+FLAGS
+  -d, --output-dir=<value>  [default: .] Directory for saving the created files.
+  -n, --name=<value>        (required) Name of the Analytics template.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Generate a simple Analytics template.
+
+  The metadata files associated with the Analytics template must be contained in
+  a parent directory called "waveTemplates" in your package directory. Either
+  run this command from an existing directory of this name, or use the
+  --output-dir flag to generate one or point to an existing one.
+
+ALIASES
+  $ sfdx force analytics template create
+
+EXAMPLES
+  Generate the metadata files for a simple Analytics template file called
+  myTemplate in the force-app/main/default/waveTemplates directory:
+
+    $ sfdx force analytics template create --name myTemplate --output-dir \
+      force-app/main/default/waveTemplates
+
+FLAG DESCRIPTIONS
+  -d, --output-dir=<value>  Directory for saving the created files.
+
+    The location can be an absolute path or relative to the current working
+    directory. The default is the current directory
+

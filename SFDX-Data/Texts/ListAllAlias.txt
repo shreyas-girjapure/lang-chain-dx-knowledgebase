@@ -1,0 +1,21 @@
+List all aliases currently set on your local computer.
+
+USAGE
+  $ sfdx alias list [--json]
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  List all aliases currently set on your local computer.
+
+  Aliases are global, which means that you can use all the listed aliases in any
+  Salesforce DX project on your computer.
+
+ALIASES
+  $ sfdx force alias list
+
+EXAMPLES
+  List all the aliases you've set:
+
+    $ sfdx alias list

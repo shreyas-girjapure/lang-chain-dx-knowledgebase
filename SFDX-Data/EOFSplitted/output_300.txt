@@ -1,0 +1,14 @@
+
+
+Update installed plugins.
+
+USAGE
+  $ sfdx plugins update [-h] [-v]
+
+FLAGS
+  -h, --help     Show CLI help.
+  -v, --verbose
+
+DESCRIPTION
+  Update installed plugins
+

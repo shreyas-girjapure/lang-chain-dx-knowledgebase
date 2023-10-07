@@ -1,0 +1,62 @@
+
+
+Generate an Apex class.
+
+USAGE
+  $ sfdx apex generate class -n <value> [--json] [-t
+    ApexException|ApexUnitTest|DefaultApexClass|InboundEmailService] [-d
+    <value>] [--api-version <value>]
+
+FLAGS
+  -d, --output-dir=<value>  [default: .] Directory for saving the created files.
+  -n, --name=<value>        (required) Name of the generated Apex class.
+  -t, --template=<option>   [default: DefaultApexClass] Template to use for file
+                            creation.
+                            <options: ApexException|ApexUnitTest|DefaultApexClas
+                            s|InboundEmailService>
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Generate an Apex class.
+
+  Generates the Apex *.cls file and associated metadata file. These files must
+  be contained in a parent directory called "classes" in your package directory.
+  Either run this command from an existing directory of this name, or use the
+  --output-dir flag to generate one or point to an existing one.
+
+ALIASES
+  $ sfdx force apex class create
+
+EXAMPLES
+  Generate two metadata files associated with the MyClass Apex class
+  (MyClass.cls and MyClass.cls-meta.xml) in the current directory:
+
+    $ sfdx apex generate class --name MyClass
+
+  Similar to previous example, but generates the files in the
+  "force-app/main/default/classes" directory:
+
+    $ sfdx apex generate class --name MyClass --output-dir \
+      force-app/main/default/classes
+
+FLAG DESCRIPTIONS
+  -d, --output-dir=<value>  Directory for saving the created files.
+
+    The location can be an absolute path or relative to the current working
+    directory. The default is the current directory.
+
+  -n, --name=<value>  Name of the generated Apex class.
+
+    The name can be up to 40 characters and must start with a letter.
+
+  -t, --template=ApexException|ApexUnitTest|DefaultApexClass|InboundEmailService
+
+    Template to use for file creation.
+
+    Supplied parameter values or default values are filled into a copy of the
+    template
+

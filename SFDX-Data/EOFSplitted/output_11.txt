@@ -1,0 +1,128 @@
+
+
+Invoke Apex tests in an org.
+
+USAGE
+  $ sfdx apex run test -o <value> [--json] [--api-version <value>] [-d
+    <value>] [-l RunLocalTests|RunAllTestsInOrg|RunSpecifiedTests] [-n <value>]
+    [-r human|tap|junit|json] [-s <value>] [-t <value>] [-w <value>] [-y] [-v
+    -c]
+
+FLAGS
+  -c, --code-coverage           Retrieve code coverage results.
+  -d, --output-dir=<value>      Directory in which to store test run files.
+  -l, --test-level=<option>     Level of tests to run; default is RunLocalTests.
+                                <options: RunLocalTests|RunAllTestsInOrg|RunSpec
+                                ifiedTests>
+  -n, --class-names=<value>     Comma-separated list of Apex test class names to
+                                run; default is all classes.
+  -o, --target-org=<value>      (required) Username or alias of the target org.
+  -r, --result-format=<option>  [default: human] Format of the test results.
+                                <options: human|tap|junit|json>
+  -s, --suite-names=<value>     Comma-separated list of Apex test suite names to
+                                run; default is all suites.
+  -t, --tests=<value>           Comma-separated list of Apex test class names or
+                                IDs and, if applicable, test methods to run;
+                                default is all tests.
+  -v, --detailed-coverage       Display detailed code coverage per test.
+  -w, --wait=<value>            Sets the streaming client socket timeout in
+                                minutes; specify a longer wait time if timeouts
+                                occur frequently.
+  -y, --synchronous             Runs test methods from a single Apex class
+                                synchronously; if not specified, tests are run
+                                asynchronously.
+  --api-version=<value>         Override the api version used for api requests
+                                made by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Invoke Apex tests in an org.
+
+  Specify which tests to run by using the --class-names, --suite-names, or
+  --tests flags. Alternatively, use the --test-level flag to run all the tests
+  in your org, local tests, or specified tests.
+
+  To see code coverage results, use the --code-coverage flag with
+  --result-format. The output displays a high-level summary of the test run and
+  the code coverage values for classes in your org. If you specify
+  human-readable result format, use the --detailed-coverage flag to see detailed
+  coverage results for each test method run.
+
+  Apex tests run asynchronously by default. The command waits for 1 minute
+  (default), or for the value of the --wait flag; if the tests have finished,
+  the command displays the results. If the tests haven't finished by the end of
+  the wait time, the command displays a test run ID; use the "sfdx apex get test
+  --test-run-id" command to get the results.
+
+  NOTE: The testRunCoverage value (JSON and JUnit result formats) is a
+  percentage of the covered lines and total lines from all the Apex classes
+  evaluated by the tests in this run.
+
+ALIASES
+  $ sfdx force apex test run
+
+EXAMPLES
+  Run all Apex tests and suites in your default org:
+
+    $ sfdx apex run test
+
+  Run the specified Apex test classes in your default org and display results
+  in human-readable form:
+
+    $ sfdx apex run test --class-names "MyClassTest,MyOtherClassTest" \
+      --result-format human
+
+  Run the specified Apex test suites in your default org and include code
+  coverage results and additional details:
+
+    $ sfdx apex run test --suite-names "MySuite,MyOtherSuite" \
+      --code-coverage --detailed-coverage
+
+  Run the specified Apex tests in your default org and display results in
+  human-readable output:
+
+    $ sfdx apex run test --tests "MyClassTest.testCoolFeature,MyClassTest.te \
+      stAwesomeFeature,AnotherClassTest,namespace.TheirClassTest.testThis" \
+      --result-format human
+
+  Run all tests in the org with the specified username with the specified test
+  level; save the output to the specified directory:
+
+    $ sfdx apex run test --test-level RunLocalTests --output-dir <path to \
+      outputdir> --target-org me@my.org
+
+FLAG DESCRIPTIONS
+  -l, --test-level=RunLocalTests|RunAllTestsInOrg|RunSpecifiedTests
+
+    Level of tests to run; default is RunLocalTests.
+
+    Here's what the levels mean:
+
+    - RunSpecifiedTests — Only the tests that you specify are run.
+    - RunLocalTests — All tests in your org are run, except the ones that
+    originate from installed managed packages.
+    - RunAllTestsInOrg — All tests are in your org and in installed managed
+    packages are run
+
+  -n, --class-names=<value>
+
+    Comma-separated list of Apex test class names to run; default is all
+    classes.
+
+    If you select --class-names, you can't specify --suite-names or --tests.
+
+  -s, --suite-names=<value>
+
+    Comma-separated list of Apex test suite names to run; default is all suites.
+
+    If you select --suite-names, you can't specify --class-names or --tests.
+
+  -t, --tests=<value>
+
+    Comma-separated list of Apex test class names or IDs and, if applicable,
+    test methods to run; default is all tests.
+
+    If you specify --tests, you can't specify --class-names or --suite-names
+

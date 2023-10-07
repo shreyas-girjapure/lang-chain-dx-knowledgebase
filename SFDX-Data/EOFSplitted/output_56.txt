@@ -1,0 +1,74 @@
+
+
+Check the status of a deploy operation.
+
+USAGE
+  $ sfdx deploy metadata report [--json] [-i <value>] [-r] [--results-dir <value>
+    --junit --coverage-formatters clover|cobertura|html-spa|html|json|json-summa
+    ry|lcovonly|none|teamcity|text|text-summary]
+
+FLAGS
+  -i, --job-id=<value>               Job ID of the deploy operation you want to
+                                     check the status of.
+  -r, --use-most-recent              Use the job ID of the most recent deploy
+                                     operation.
+  --coverage-formatters=<option>...  Format of the code coverage results.
+                                     <options: clover|cobertura|html-spa|html|js
+                                     on|json-summary|lcovonly|none|teamcity|text
+                                     |text-summary>
+  --junit                            Output JUnit test results.
+  --results-dir=<value>              Output directory for code coverage and
+                                     JUnit results; defaults to the deploy ID.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Check the status of a deploy operation.
+
+  Deploy operations include standard deploys, quick deploys, deploy validations,
+  and deploy cancellations.
+
+  Run this command by either passing it a job ID or specifying the
+  --use-most-recent flag to use the job ID of the most recent deploy operation.
+
+ALIASES
+  $ sfdx deploy metadata report
+
+EXAMPLES
+  Check the status using a job ID:
+
+    $ sfdx deploy metadata report --job-id 0Af0x000017yLUFCA2
+
+  Check the status of the most recent deploy operation:
+
+    $ sfdx deploy metadata report --use-most-recent
+
+FLAG DESCRIPTIONS
+  -i, --job-id=<value>
+
+    Job ID of the deploy operation you want to check the status of.
+
+    These commands return a job ID if they time out or you specified the --async
+    flag:
+
+    - sfdx project deploy start
+    - sfdx project deploy validate
+    - sfdx project deploy quick
+    - sfdx project deploy cancel
+
+    The job ID is valid for 10 days from when you started the deploy operation.
+
+  -r, --use-most-recent  Use the job ID of the most recent deploy operation.
+
+    For performance reasons, this flag uses job IDs for deploy operations that
+    started only in the past 3 days or less. If your most recent operation was
+    more than 3 days ago, this flag won't find a job ID.
+
+  --coverage-formatters=clover|cobertura|html-spa|html|json|json-summary|lcovonly|none|teamcity|text|text-summary...
+
+    Format of the code coverage results.
+
+    For multiple formatters, repeat the flag for each formatter.
+    --coverage-formatters lcov --coverage-formatters clover
+

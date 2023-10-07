@@ -1,0 +1,42 @@
+
+
+Activate debug logging and display logs in the terminal.
+
+USAGE
+  $ sfdx apex tail log -o <value> [--json] [--api-version <value>] [-c] [-d
+    <value> | -s]
+
+FLAGS
+  -c, --color                Apply default colors to noteworthy log lines.
+  -d, --debug-level=<value>  Debug level to set on the DEVELOPER_LOG trace flag
+                             for your user.
+  -o, --target-org=<value>   (required) Username or alias of the target org.
+  -s, --skip-trace-flag      Skip trace flag setup. Assumes that a trace flag
+                             and debug level are fully set up.
+  --api-version=<value>      Override the api version used for api requests made
+                             by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Activate debug logging and display logs in the terminal.
+
+  You can also pipe the logs to a file.
+
+ALIASES
+  $ sfdx force apex log tail
+
+EXAMPLES
+  Activate debug logging:
+
+    $ sfdx apex tail log
+
+  Specify a debug level:
+
+    $ sfdx apex tail log --debug-level MyDebugLevel
+
+  Skip the trace flag setup and apply default colors:
+
+    $ sfdx apex tail log --color --skip-trace-flag
+

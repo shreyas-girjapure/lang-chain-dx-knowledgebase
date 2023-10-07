@@ -1,0 +1,49 @@
+
+
+Display record counts for the specified standard or custom objects.
+
+USAGE
+  $ sfdx limits recordcounts display -o <value> [--json] [-s <value>] [--api-version
+    <value>]
+
+FLAGS
+  -o, --target-org=<value>  (required) Username or alias of the target org.
+  -s, --sobject=<value>...  [default: ] API name of the standard or custom
+                            object for which to display record counts.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Display record counts for the specified standard or custom objects.
+
+  Use this command to get an approximate count of the records in standard or
+  custom objects in your org. These record counts are the same as the counts
+  listed in the Storage Usage page in the Setup UI. The record counts are
+  approximate because they're calculated asynchronously and your org's storage
+  usage isn't updated immediately. To display all available record counts, run
+  the command without the --sobject flag.
+
+ALIASES
+  $ sfdx force limits recordcounts display
+  $ sfdx org list sobject record-counts
+
+EXAMPLES
+  Display all available record counts in your default org:
+
+    $ sfdx limits recordcounts display
+
+  Display record counts for the Account, Contact, Lead, and Opportunity
+  objects in your default org:
+
+    $ sfdx limits recordcounts display --sobject Account --sobject Contact \
+      --sobject Lead --sobject Opportunity
+
+  Display record counts for the Account and Lead objects for the org with
+  alias "my-scratch-org":
+
+    $ sfdx limits recordcounts display --sobject Account --sobject Lead \
+      --target-org my-scratch-org
+

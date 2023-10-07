@@ -1,0 +1,63 @@
+
+
+List package version creation requests.
+
+USAGE
+  $ sfdx package version create list -v <value> [--json] [--api-version <value>] [-c
+    <value>] [-s Queued|InProgress|Success|Error]
+
+FLAGS
+  -c, --created-last-days=<value>  Number of days since the request was created,
+                                   starting at 00:00:00 of first day to now. Use
+                                   0 for today.
+  -s, --status=<option>            Status of the version creation request, used
+                                   to filter the list.
+                                   <options: Queued|InProgress|Success|Error>
+  -v, --target-dev-hub=<value>     (required) Username or alias of the Dev Hub
+                                   org.
+  --api-version=<value>            Override the api version used for api
+                                   requests made by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  List package version creation requests.
+
+  Shows the details of each request to create a package version in the Dev Hub
+  org.
+
+  All filter parameters are applied using the AND logical operator (not OR).
+
+  To get information about a specific request, run "sfdx package version create
+  report" and supply the request ID.
+
+ALIASES
+  $ sfdx force package beta version create list
+  $ sfdx force package version create list
+
+EXAMPLES
+  List all package version creation requests in your default Dev Hub org:
+
+    $ sfdx package version create list
+
+  List package version creation requests from the last 3 days in the Dev Hub
+  org with username devhub@example.com:
+
+    $ sfdx package version create list --created-last-days 3 \
+      --target-dev-hub
+
+  List package version creation requests with status Error:
+
+    $ sfdx package version create list --status Error
+
+  List package version creation requests with status InProgress:
+
+    $ sfdx package version create list --status InProgress
+
+  List package version creation requests with status Success that were created
+  today:
+
+    $ sfdx package version create list --created-last-days 0 --status \
+      Success
+

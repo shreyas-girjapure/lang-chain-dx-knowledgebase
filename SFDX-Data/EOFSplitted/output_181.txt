@@ -1,0 +1,28 @@
+
+
+List the org’s installed packages.
+
+USAGE
+  $ sfdx package installed list -o <value> [--json] [--api-version <value>]
+
+FLAGS
+  -o, --target-org=<value>  (required) Username or alias of the target org.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+ALIASES
+  $ sfdx force package beta installed list
+  $ sfdx force package installed list
+
+EXAMPLES
+  List the installed packages in your default org:
+
+    $ sfdx package installed list
+
+  List the installed packages in the org with username me@example.com:
+
+    $ sfdx package installed list --target-org me@example.com
+

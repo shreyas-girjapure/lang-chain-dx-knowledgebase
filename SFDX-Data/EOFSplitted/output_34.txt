@@ -1,0 +1,51 @@
+
+
+Get the value of a configuration variable.
+
+USAGE
+  $ sfdx config get [--json] [--verbose]
+
+FLAGS
+  --verbose  Display whether the configuration variables are set locally or
+             globally.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Get the value of a configuration variable.
+
+  Run "sf config list" to see all the configuration variables you've set. Global
+  configuration variable are always displayed; local ones are displayed if you
+  run the command in a project directory. Run "sf config set" to set a
+  configuration variable.
+
+ALIASES
+  $ sfdx force config get
+
+EXAMPLES
+  Get the value of the "target-org" configuration variable.
+
+    $ sfdx config get target-org
+
+  Get multiple configuration variables and display whether they're set locally
+  or globally:
+
+    $ sfdx config get target-org api-version --verbose
+
+CONFIGURATION VARIABLES
+  org-instance-url               URL of the Salesforce instance hosting your
+                                 org. Default: https://login.salesforce.com.
+  org-api-version                API version of your project. Default: API
+                                 version of your Dev Hub org.
+  target-dev-hub                 Username or alias of your default Dev Hub org.
+                                 (sf only)
+  target-org                     Username or alias of the org that all commands
+                                 run against by default. (sf only)
+  org-isv-debugger-sid           ISV debugger SID.
+  org-isv-debugger-url           ISV debugger URL.
+  org-custom-metadata-templates  A valid repository URL or directory for the
+                                 custom org metadata templates.
+  org-max-query-limit            Maximum number of Salesforce records returned
+                                 by a CLI command. Default: 10,000
+

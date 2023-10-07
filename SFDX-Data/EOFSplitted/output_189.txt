@@ -1,0 +1,41 @@
+
+
+Delete a package version.
+
+USAGE
+  $ sfdx package version delete -v <value> -p <value> [--json] [--api-version
+    <value>] [-n]
+
+FLAGS
+  -n, --no-prompt               Don’t prompt before deleting the package
+                                version.
+  -p, --package=<value>         (required) ID (starts with 04t) or alias of the
+                                package version to delete.
+  -v, --target-dev-hub=<value>  (required) Username or alias of the Dev Hub org.
+  --api-version=<value>         Override the api version used for api requests
+                                made by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Delete a package version.
+
+  Specify the ID or alias of the package version you want to delete.
+
+ALIASES
+  $ sfdx force package beta version delete
+  $ sfdx force package version delete
+
+EXAMPLES
+  Delete a package version with the specified alias using your default Dev Hub
+  org:
+
+    $ sfdx package version delete --package "Your Package Alias"
+
+  Delete a package version with the specified ID using the Dev Hub org with
+  username "devhub@example.com":
+
+    $ sfdx package version delete --package 04t... --target-org \
+      devhub@example.com
+

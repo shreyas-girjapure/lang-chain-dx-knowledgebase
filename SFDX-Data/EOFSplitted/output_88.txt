@@ -1,0 +1,77 @@
+
+
+Generate an Apex trigger.
+
+USAGE
+  $ sfdx force apex trigger create -n <value> [--json] [-t ApexTrigger] [-d <value>]
+    [--api-version <value>] [-s <value>] [-e before insert|before update|before
+    delete|after insert|after update|after delete|after undelete]
+
+FLAGS
+  -d, --output-dir=<value>  [default: .] Directory for saving the created files.
+  -e, --event=<option>...   [default: before insert] Events that fire the
+                            trigger.
+                            <options: before insert|before update|before
+                            delete|after insert|after update|after delete|after
+                            undelete>
+  -n, --name=<value>        (required) Name of the generated Apex trigger
+  -s, --sobject=<value>     [default: SOBJECT] Salesforce object to generate a
+                            trigger on.
+  -t, --template=<option>   [default: ApexTrigger] Template to use for file
+                            creation.
+                            <options: ApexTrigger>
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Generate an Apex trigger.
+
+  Generates the Apex trigger *.trigger file and associated metadata file. These
+  files must be contained in a parent directory called "triggers" in your
+  package directory. Either run this command from an existing directory of this
+  name, or use the --output-dir flag to generate one or point to an existing
+  one.
+
+  If you don't specify the --sobject flag, the .trigger file contains the
+  generic placeholder SOBJECT; replace it with the Salesforce object you want to
+  generate a trigger for. If you don't specify --event, "before insert" is used.
+
+ALIASES
+  $ sfdx force apex trigger create
+
+EXAMPLES
+  Generate two files associated with the MyTrigger Apex trigger
+  (MyTrigger.trigger and MyTrigger.trigger-meta.xml) in the current directory:
+
+    $ sfdx force apex trigger create --name MyTrigger
+
+  Similar to the previous example, but generate the files in the
+  "force-app/main/default/triggers" directory:
+
+    $ sfdx force apex trigger create --name MyTrigger --output-dir \
+      force-app/main/default/triggers
+
+  Generate files for a trigger that fires on the Account object before and
+  after an insert:
+
+    $ sfdx force apex trigger create --name MyTrigger --sobject Account \
+      --event "before insert,after insert"
+
+FLAG DESCRIPTIONS
+  -d, --output-dir=<value>  Directory for saving the created files.
+
+    The location can be an absolute path or relative to the current working
+    directory. The default is the current directory.
+
+  -n, --name=<value>  Name of the generated Apex trigger
+
+    The name can be up to 40 characters and must start with a letter.
+
+  -t, --template=ApexTrigger  Template to use for file creation.
+
+    Supplied parameter values or default values are filled into a copy of the
+    template
+

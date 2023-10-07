@@ -1,0 +1,46 @@
+
+
+list basic information about all rules matching provided criteria
+
+USAGE
+  $ sfdx scanner rule list [-c <array>] [-r <array>] [-l <array>] [-e <array>]
+    [--verbose] [--json] [--loglevel
+    trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+FLAGS
+  -c, --category=<value>
+      select rules by category
+
+  -e, --engine=<value>
+      select rules by engine
+
+  -l, --language=<value>
+      select rules by language
+
+  -r, --ruleset=<value>
+      [deprecated] select rules by ruleset
+
+  --json
+      format output as json
+
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATA
+  L)
+      [default: warn] logging level for this command invocation
+
+  --verbose
+      emit additional command output to stdout
+
+DESCRIPTION
+  list basic information about all rules matching provided criteria
+
+EXAMPLES
+  This example invokes the command without filter criteria, which returns all rules.
+  	$ sfdx scanner:rule:list
+  This example returns all rules for Apex OR Javascript. Values supplied to a single filter are handled with a logical OR.
+  	$ sfdx scanner:rule:list --language apex,javascript
+  This example returns all rules except those in the Design or Best Practices categories. Exclude categories by specifying the negation operator and enclosing the values in single quotes.
+  	$ sfdx scanner:rule:list --category '!Design,!Best Practices'
+  This example returns all rules that target Apex OR Javascript, AND are members of the Braces OR Security rulesets.
+  The different filters are combined with a logical AND.
+  	$ sfdx scanner:rule:list --language apex,javascript --ruleset Braces,Security
+

@@ -1,0 +1,35 @@
+
+
+provide detailed information about a rule
+
+USAGE
+  $ sfdx scanner rule describe -n <string> [--verbose] [--json] [--loglevel
+    trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+FLAGS
+  -n, --rulename=<value>
+      (required) the name of the rule
+
+  --json
+      format output as json
+
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATA
+  L)
+      [default: warn] logging level for this command invocation
+
+  --verbose
+      emit additional command output to stdout
+
+DESCRIPTION
+  provide detailed information about a rule
+
+EXAMPLES
+  $ sfdx scanner:rule:describe --rulename ExampleRule
+  	name:        AvoidWithStatement
+  	categories:   Best Practices
+  	rulesets:    Controversial Ecmascript
+  	languages:   javascript
+  	description: Avoid using with - it's bad news
+  	message:     Avoid using with - it's bad news
+	
+

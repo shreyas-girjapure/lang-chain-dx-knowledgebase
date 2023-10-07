@@ -1,0 +1,37 @@
+
+
+Audit messages in a plugin's messages directory to locate unused messages and missing messages that have references in source code.
+
+USAGE
+  $ sfdx dev audit messages [--json] [-p <value>] [-m <value>] [-s <value>]
+
+FLAGS
+  -m, --messages-dir=<value>  [default: messages] Directory that contains the
+                              plugin's message files.
+  -p, --project-dir=<value>   [default: .] Location of the project where
+                              messages are to be audited.
+  -s, --source-dir=<value>    [default: src] Directory that contains the
+                              plugin's source code.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+EXAMPLES
+  Audit messages using default directories:
+
+    $ sfdx dev audit messages
+
+  Audit messages in the "messages" directory in the current working directory;
+  the plugin's source directory is in "src":
+
+    $ sfdx dev audit messages --messages-dir ./messages --source-dir ./src
+
+FLAG DESCRIPTIONS
+  -m, --messages-dir=<value>  Directory that contains the plugin's message files.
+
+    The default is the "messages" directory in the current working directory.
+
+  -s, --source-dir=<value>  Directory that contains the plugin's source code.
+
+    The default is the "src" directory in the current working directory
+

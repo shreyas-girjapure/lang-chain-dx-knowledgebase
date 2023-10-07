@@ -1,0 +1,48 @@
+
+
+Unset local or global configuration variables.
+
+USAGE
+  $ sfdx config unset [--json] [-g]
+
+FLAGS
+  -g, --global  Unset the configuration variables globally, so they can no
+                longer be used from any Salesforce DX project.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Unset local or global configuration variables.
+
+  Local configuration variables apply only to your current project. Global
+  configuration variables apply in any Salesforce DX project.
+
+ALIASES
+  $ sfdx force config unset
+
+EXAMPLES
+  Unset the local "target-org" configuration variable:
+
+    $ sfdx config unset target-org
+
+  Unset multiple configuration variables globally:
+
+    $ sfdx config unset target-org api-version --global
+
+CONFIGURATION VARIABLES
+  org-instance-url               URL of the Salesforce instance hosting your
+                                 org. Default: https://login.salesforce.com.
+  org-api-version                API version of your project. Default: API
+                                 version of your Dev Hub org.
+  target-dev-hub                 Username or alias of your default Dev Hub org.
+                                 (sf only)
+  target-org                     Username or alias of the org that all commands
+                                 run against by default. (sf only)
+  org-isv-debugger-sid           ISV debugger SID.
+  org-isv-debugger-url           ISV debugger URL.
+  org-custom-metadata-templates  A valid repository URL or directory for the
+                                 custom org metadata templates.
+  org-max-query-limit            Maximum number of Salesforce records returned
+                                 by a CLI command. Default: 10,000
+

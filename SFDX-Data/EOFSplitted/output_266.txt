@@ -1,0 +1,33 @@
+
+
+Retrieve the status of a package version creation request.
+
+USAGE
+  $ sfdx package1 version create get -o <value> -i <value> [--json] [--api-version
+    <value>]
+
+FLAGS
+  -i, --request-id=<value>  (required) ID of the PackageUploadRequest (starts
+                            with 0HD).
+  -o, --target-org=<value>  (required) Username or alias of the target org.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+ALIASES
+  $ sfdx force package1 beta version create get
+  $ sfdx force package1 version create get
+
+EXAMPLES
+  Get the status of the creation request for the package version with the
+  specified ID in your default org:
+
+    $ sfdx package1 version create get --request-id 0HD...
+
+  Same as previous example, but use the specified org:
+
+    $ sfdx package1 version create get --request-id 0HD... --target-org \
+      myorg@example.com
+

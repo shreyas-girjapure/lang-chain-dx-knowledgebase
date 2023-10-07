@@ -1,0 +1,58 @@
+
+
+This command is in beta.
+
+Generate the metadata source files for a new custom tab on a custom object.
+
+USAGE
+  $ sfdx generate metadata tab -o <value> -d <value> -i <value> [--json]
+
+FLAGS
+  -d, --directory=<value>  (required) Path to a "tabs" directory that will
+                           contain the source files for your new tab.
+  -i, --icon=<value>       (required) [default: 1] Number from 1 to 100 that
+                           specifies the color scheme and icon for the custom
+                           tab.
+  -o, --object=<value>     (required) API name of the custom object you're
+                           generating a tab for.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Generate the metadata source files for a new custom tab on a custom object.
+
+  Custom tabs let you display custom object data or other web content in
+  Salesforce. Custom tabs appear in Salesforce as an item in the app’s
+  navigation bar and in the App Launcher.
+
+  This command must be run in a Salesforce DX project directory. You must pass
+  all required information to it with the required flags. The source files for
+  the custom object for which you're generating a tab don't need to exist in
+  your local project.
+
+ALIASES
+  $ sfdx generate metadata tab
+
+EXAMPLES
+  Create a tab on the MyObject__c custom object:
+
+    $ sfdx generate metadata tab --object MyObject__c --icon 54 --directory \
+      force-app/main/default/tabs
+
+FLAG DESCRIPTIONS
+  -i, --icon=<value>
+
+    Number from 1 to 100 that specifies the color scheme and icon for the custom
+    tab.
+
+    See https://lightningdesignsystem.com/icons/\#custom for the available
+    icons.
+
+  -o, --object=<value>
+
+    API name of the custom object you're generating a tab for.
+
+    The API name for a custom object always ends in "__c", such as
+    "MyObject__c"
+

@@ -1,6 +1,7 @@
 //Document Loading and Transforming
 import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
 import { PDFLoader } from "langchain/document_loaders/fs/pdf"
+import { TextLoader } from "langchain/document_loaders/fs/text"
 
 import { FaissStore } from "langchain/vectorstores/faiss";
 import fs from 'fs/promises';
@@ -33,8 +34,9 @@ async function getVectoredData(splitterInstance, existingVectorStorefilePath, em
     } else {
         const directoryLoader = new DirectoryLoader(directoryPath, {
             ".pdf": (path) => new PDFLoader(path),
+            ".txt": (path) => new TextLoader(path),
         })
-        let splittedAndLoadedDocuments = await directoryLoader.loadAndSplit(splitterInstance, embedderInstance);
+        let splittedAndLoadedDocuments = await directoryLoader.load(splitterInstance, embedderInstance);
         vectorStore = await FaissStore.fromDocuments(
             splittedAndLoadedDocuments,
             embedderInstance

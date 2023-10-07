@@ -1,0 +1,106 @@
+
+
+Quickly deploy a validated deployment to an org.
+
+USAGE
+  $ sfdx project deploy quick [--json] [--async | -w <value>] [--concise |
+    --verbose] [-i <value>] [-o <value>] [-r] [-a <value>]
+
+FLAGS
+  -a, --api-version=<value>  Target API version for the deploy.
+  -i, --job-id=<value>       Job ID of the deployment you want to quick deploy.
+  -o, --target-org=<value>   Login username or alias for the target org.
+  -r, --use-most-recent      Use the job ID of the most recently validated
+                             deployment.
+  -w, --wait=<minutes>       [default: 33 minutes] Number of minutes to wait for
+                             the command to complete and display results.
+  --async                    Run the command asynchronously.
+  --concise                  Show concise output of the deploy result.
+  --verbose                  Show verbose output of the deploy result.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Quickly deploy a validated deployment to an org.
+
+  Before you run this command, first create a validated deployment with the
+  "sfdx project deploy validate" command, which returns a job ID. Validated
+  deployments haven't been deployed to the org yet; you deploy them with this
+  command. Either pass the job ID to this command or use the --use-most-recent
+  flag to use the job ID of the most recently validated deployment. For the
+  quick deploy to succeed, the associated validated deployment must also have
+  succeeded.
+
+  Executing this quick deploy command takes less time than a standard deploy
+  because it skips running Apex tests. These tests were previously run as part
+  of the validation. Validating first and then running a quick deploy is useful
+  if the deployment to your production org take several hours and you don’t want
+  to risk a failed deploy.
+
+  This command doesn't support source-tracking. The source you deploy overwrites
+  the corresponding metadata in your org. This command doesn’t attempt to merge
+  your source with the versions in your org.
+
+ALIASES
+  $ sfdx deploy metadata quick
+
+EXAMPLES
+  Run a quick deploy to your default org using a job ID:
+
+    $ sfdx project deploy quick --job-id 0Af0x000017yLUFCA2
+
+  Asynchronously run a quick deploy of the most recently validated deployment
+  to an org with alias "my-prod-org":
+
+    $ sfdx project deploy quick --async --use-most-recent --target-org \
+      my-prod-org
+
+FLAG DESCRIPTIONS
+  -a, --api-version=<value>  Target API version for the deploy.
+
+    Use this flag to override the default API version with the API version of
+    your package.xml file. The default API version is the latest version
+    supported by the CLI.
+
+  -i, --job-id=<value>  Job ID of the deployment you want to quick deploy.
+
+    The job ID is valid for 10 days from when you started the validation.
+
+  -o, --target-org=<value>  Login username or alias for the target org.
+
+    Overrides your default org.
+
+  -r, --use-most-recent
+
+    Use the job ID of the most recently validated deployment.
+
+    For performance reasons, this flag uses only job IDs that were validated in
+    the past 3 days or less. If your most recent deployment validation was more
+    than 3 days ago, this flag won't find a job ID.
+
+  -w, --wait=<minutes>
+
+    Number of minutes to wait for the command to complete and display results.
+
+    If the command continues to run after the wait period, the CLI returns
+    control of the terminal window to you. To resume watching the deploy, run
+    "sfdx project deploy resume". To check the status of the deploy, run "sfdx
+    project deploy report".
+
+  --async  Run the command asynchronously.
+
+    The command immediately returns the control of the terminal to you. This
+    way, you can continue to use the CLI. To resume watching the deploy, run
+    "sfdx project deploy resume". To check the status of the deploy, run "sfdx
+    project deploy report".
+
+ERROR CODES
+  Succeeded (0)          The deploy succeeded.
+  Canceled (1)           The deploy was canceled.
+  Failed (1)             The deploy failed.
+  SucceededPartial (68)  The deploy partially succeeded.
+  InProgress (69)        The deploy is in progress.
+  Pending (69)           The deploy is pending.
+  Canceling (69)         The deploy is being canceled
+

@@ -1,0 +1,95 @@
+
+
+Create an Experience Cloud site using a template.
+
+USAGE
+  $ sfdx community create -n <value> -t <value> -o <value> [--json] [-p
+    <value>] [-d <value>] [--api-version <value>]
+
+FLAGS
+  -d, --description=<value>      Description of the site.
+  -n, --name=<value>             (required) Name of the site to create.
+  -o, --target-org=<value>       (required) Username or alias of the target org.
+  -p, --url-path-prefix=<value>  URL to append to the domain created when
+                                 Digital Experiences was enabled for this org.
+  -t, --template-name=<value>    (required) Template to use to create a site.
+  --api-version=<value>          Override the api version used for api requests
+                                 made by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Create an Experience Cloud site using a template.
+
+  See 'Which Experience Cloud Template Should I Use?' (https://help.salesforce.c
+  om/s/articleView?id=sf.siteforce_commtemp_intro.htm&type=5) in Salesforce Help
+  for more information about the different template
+  types available for Experience Cloud.
+
+  When creating a site with the Build Your Own (LWR) template, you must also
+  specify the AuthenticationType value using the format
+  templateParams.AuthenticationType=value, where value is AUTHENTICATED,
+  UNAUTHENTICATED, or AUTHENTICATED_WITH_PUBLIC_ACCESS. Name and values are
+  case-sensitive. See 'ExperienceBundle' in the Metadata API Developer Guide for
+  more information. (https://developer.salesforce.com/docs/atlas.en-us.api_meta.
+  meta/api_meta/meta_experiencebundle.htm)
+
+  When you execute this command, it creates the site in preview status, which
+  means that it isn't yet live. After you finish building your site, you can
+  make it live.
+
+  If you have an Experience Builder site, publish the site using the "community
+  publish" command to make it live.
+
+  If you have a Salesforce Tabs + Visualforce site, activate the site to make it
+  live by updating the status field of the Network type in the Metadata API.
+  Alternatively, in Experience Workspaces, go to Administration | Settings, and
+  click Activate.
+
+  For Experience Builder sites, activating the site just sends out a welcome
+  email to site members.
+
+ALIASES
+  $ sfdx force community create
+
+EXAMPLES
+  Create an Experience Cloud site using template 'Customer Service' and URL
+  path prefix 'customers':
+
+    $ sfdx community create --name 'My Customer Site' --template-name \
+      'Customer Service' --url-path-prefix customers --description 'My \
+      customer site'
+
+  Create a site using 'Partner Central' template:
+
+    $ sfdx community create --name partnercentral --template-name 'Partner \
+      Central' --url-path-prefix partners
+
+  Create a site using the 'Build Your Own (LWR)' template with authentication
+  type of UNAUTHENTICATED:
+
+    $ sfdx community create --name lwrsite --template-name 'Build Your Own \
+      (LWR)' --url-path-prefix lwrsite \
+      templateParams.AuthenticationType=UNAUTHENTICATED
+
+FLAG DESCRIPTIONS
+  -d, --description=<value>  Description of the site.
+
+    The description displays in Digital Experiences - All Sites in Setup and
+    helps with site identification.
+
+  -p, --url-path-prefix=<value>
+
+    URL to append to the domain created when Digital Experiences was enabled for
+    this org.
+
+    For example, if your domain name is https://MyDomainName.my.site.com and you
+    create a customer site, enter 'customers' to create the unique URL
+    https://MyDomainName.my.site.com/customers.
+
+  -t, --template-name=<value>  Template to use to create a site.
+
+    An example of a template is Customer Service. Run the "community template
+    list" command to see which templates are available in your org
+

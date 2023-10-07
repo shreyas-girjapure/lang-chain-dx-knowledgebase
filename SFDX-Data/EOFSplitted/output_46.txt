@@ -1,0 +1,35 @@
+
+
+View the status of a bulk query.
+
+USAGE
+  $ sfdx data query resume [--json] [-o <value>] [--api-version <value>] [-r
+    human|json|csv] [-r | -i <value>]
+
+FLAGS
+  -i, --bulk-query-id=<value>   Job ID of the bulk query.
+  -o, --target-org=<value>      Org alias or username to use for the target org.
+  -r, --result-format=<option>  [default: human] Format to display the results;
+                                the --json flag overrides this flag.
+                                <options: human|json|csv>
+  -r, --use-most-recent         Use the most recent bulk query ID from cache.
+  --api-version=<value>         Override the api version used for api requests
+                                made by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  View the status of a bulk query.
+
+  Run this command using the job ID returned from the "sfdx data query --bulk"
+  command.
+
+ALIASES
+  $ sfdx force data soql bulk report
+
+EXAMPLES
+  View the status of a bulk query with the specified ID:
+
+    $ sfdx data query resume --bulk-query-id 7500x000005BdFzXXX
+

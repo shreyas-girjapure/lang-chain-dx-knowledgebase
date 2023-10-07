@@ -1,0 +1,25 @@
+
+
+Convert a .json messages file into Markdown.
+
+USAGE
+  $ sfdx dev convert messages -f <value> [--json] [-p <value>]
+
+FLAGS
+  -f, --file-name=<value>...  (required) Filename to convert.
+  -p, --project-dir=<value>   [default: .] Location of the project whose
+                              messages are to be converted.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+EXAMPLES
+  Convert the my-command.json message file into my-command.md with the
+  standard messages headers:
+
+    $ sfdx dev convert messages --filename my-command.json
+
+  Similar to previous example, but specify the plugin project directory:
+
+  $ sfdx dev convert messages --project-dir ./path/to/plugin --filename my-command.json
+

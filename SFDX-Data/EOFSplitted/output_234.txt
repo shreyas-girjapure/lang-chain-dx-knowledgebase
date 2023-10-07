@@ -1,0 +1,124 @@
+
+
+Create a sandbox org.
+
+USAGE
+  $ sfdx org create sandbox -o <value> [--json] [-f <value> | -n <value> | -l
+    Developer|Developer_Pro|Partial|Full] [-s] [-a <value>] [-w <value> |
+    --async] [-i <value> | ] [-c <value> | ] [--no-prompt] [--no-track-source]
+
+FLAGS
+  -a, --alias=<value>            Alias for the sandbox org.
+  -c, --clone=<value>            Name of the sandbox org to clone.
+  -f, --definition-file=<value>  Path to a sandbox definition file.
+  -i, --poll-interval=<seconds>  [default: 30 seconds] Number of seconds to wait
+                                 between retries.
+  -l, --license-type=<option>    Type of sandbox license.
+                                 <options: Developer|Developer_Pro|Partial|Full>
+  -n, --name=<value>             Name of the sandbox org.
+  -o, --target-org=<value>       (required) Username or alias of the production
+                                 org that contains the sandbox license.
+  -s, --set-default              Set the sandbox org as your default org.
+  -w, --wait=<minutes>           [default: 30 minutes] Number of minutes to wait
+                                 for the sandbox org to be ready.
+  --async                        Request the sandbox creation, but don't wait
+                                 for it to complete.
+  --no-prompt                    Don't prompt for confirmation about the sandbox
+                                 configuration.
+  --no-track-source              Do not use source tracking for this sandbox.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Create a sandbox org.
+
+  There are two ways to create a sandbox org: specify a definition file that
+  contains the sandbox options or use the --name and --license-type flags to
+  specify the two required options. If you want to set an option other than name
+  or license type, such as apexClassId, you must use a definition file.
+
+ALIASES
+  $ sfdx env create sandbox
+
+EXAMPLES
+  Create a sandbox org using a definition file and give it the alias
+  "MyDevSandbox". The production org that contains the sandbox license has the
+  alias "prodOrg".
+
+    $ sfdx org create sandbox -f config/dev-sandbox-def.json --alias \
+      MyDevSandbox --target-org prodOrg
+
+  Create a sandbox org by directly specifying its name and type of license
+  (Developer) instead of using a definition file. Set the sandbox org as your
+  default.
+
+    $ sfdx org create sandbox --name mysandbox --license-type Developer \
+      --alias MyDevSandbox --target-org prodOrg --set-default
+
+FLAG DESCRIPTIONS
+  -a, --alias=<value>  Alias for the sandbox org.
+
+    When you create a sandbox, the generated usernames are based on the
+    usernames present in the production org. To ensure uniqueness, the new
+    usernames are appended with the name of the sandbox. For example, the
+    username "user@example.com" in the production org results in the username
+    "user@example.com.mysandbox" in a sandbox named "mysandbox". When you set an
+    alias for a sandbox org, it's assigned to the resulting username of the user
+    running this command.
+
+  -c, --clone=<value>  Name of the sandbox org to clone.
+
+    The value of clone must be an existing sandbox in the same target-org.
+
+  -f, --definition-file=<value>  Path to a sandbox definition file.
+
+    The sandbox definition file is a blueprint for the sandbox. You can create
+    different definition files for each sandbox type that you use in the
+    development process. See <https://developer.salesforce.com/docs/atlas.en-us.
+    sfdx_dev.meta/sfdx_dev/sfdx_dev_sandbox_definition.htm> for all the options
+    you can specify in the defintion file.
+
+  -n, --name=<value>  Name of the sandbox org.
+
+    The name must be a unique alphanumeric string (10 or fewer characters) to
+    identify the sandbox. You can’t reuse a name while a sandbox is in the
+    process of being deleted.
+
+  -o, --target-org=<value>
+
+    Username or alias of the production org that contains the sandbox license.
+
+    When it creates the sandbox org, Salesforce copies the metadata, and
+    optionally data, from your production org to the new sandbox org.
+
+  -w, --wait=<minutes>
+
+    Number of minutes to wait for the sandbox org to be ready.
+
+    If the command continues to run after the wait period, the CLI returns
+    control of the terminal to you and displays the "sfdx org resume sandbox"
+    command you run to check the status of the create. The displayed command
+    includes the job ID for the running sandbox creation.
+
+  --async  Request the sandbox creation, but don't wait for it to complete.
+
+    The command immediately displays the job ID and returns control of the
+    terminal to you. This way, you can continue to use the CLI. To check the
+    status of the sandbox creation, run "sfdx org resume sandbox".
+
+  --no-track-source  Do not use source tracking for this sandbox.
+
+    We recommend you enable source tracking in Developer and Developer Pro
+    sandbox, which is why it's the default behavior. Source tracking allows you
+    to track the changes you make to your metadata, both in your local project
+    and in the sandbox, and to detect any conflicts between the two.
+
+    To disable source tracking in the new sandbox, specify the --no-track-source
+    flag. The main reason to disable source tracking is for performance. For
+    example, while you probably want to deploy metadata and run Apex tests in
+    your CI/CD jobs, you probably don't want to incur the costs of source
+    tracking (checking for conflicts, polling the SourceMember object, various
+    file system operations.) This is a good use case for disabling source
+    tracking in the sandbox
+

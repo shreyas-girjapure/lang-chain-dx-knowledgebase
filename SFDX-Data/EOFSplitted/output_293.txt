@@ -1,0 +1,12 @@
+
+
+ALIASES
+  $ sfdx plugins add
+
+EXAMPLES
+  $ sfdx plugins:install myplugin 
+
+  $ sfdx plugins:install https://github.com/someuser/someplugin
+
+  $ sfdx plugins:install someuser/someplugin
+

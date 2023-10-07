@@ -1,0 +1,38 @@
+
+
+Use force:data:bulk:status instead
+View the status of a bulk data load job or batch.
+
+USAGE
+  $ sfdx data resume -o <value> -i <value> [--json] [--api-version
+    <value>] [-b <value>]
+
+FLAGS
+  -b, --batch-id=<value>    ID of the batch whose status you want to view; you
+                            must also specify the job ID.
+  -i, --job-id=<value>      (required) ID of the job whose status you want to
+                            view.
+  -o, --target-org=<value>  (required) Org alias or username to use for the
+                            target org.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  View the status of a bulk data load job or batch.
+
+  Run this command using the job ID or batch ID returned from the "sfdx data
+  delete bulk" or "sfdx data upsert bulk" commands.
+
+EXAMPLES
+  View the status of a bulk load job:
+
+    $ sfdx data resume --job-id 750xx000000005sAAA
+
+  View the status of a bulk load job and a specific batches:
+
+    $ sfdx data resume --job-id 750xx000000005sAAA --batch-id \
+      751xx000000005nAAA
+

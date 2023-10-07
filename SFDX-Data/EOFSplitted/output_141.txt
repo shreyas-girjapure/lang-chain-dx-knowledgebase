@@ -1,0 +1,40 @@
+
+
+List all orgs you’ve created or authenticated to.
+
+USAGE
+  $ sfdx force org list [--json] [--verbose] [--all] [-p --clean]
+    [--skip-connection-status]
+
+FLAGS
+  -p, --no-prompt           Don't prompt for confirmation.
+  --all                     Include expired, deleted, and unknown-status scratch
+                            orgs.
+  --clean                   Remove all local org authorizations for non-active
+                            scratch orgs. Use auth:logout to remove non-scratch
+                            orgs.
+  --skip-connection-status  Skip retrieving the connection status of non-scratch
+                            orgs.
+  --verbose                 List more information about each org.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+ALIASES
+  $ sfdx force org list
+
+EXAMPLES
+  List all orgs you've created or authenticated to:
+
+    $ sfdx force org list
+
+  List all orgs, including expired, deleted, and unknown-status orgs; don't
+  include the connection status:
+
+    $ sfdx force org list --skip-connection-status --all
+
+  List orgs and remove local org authorization info about non-active scratch
+  orgs:
+
+    $ sfdx force org list --clean
+

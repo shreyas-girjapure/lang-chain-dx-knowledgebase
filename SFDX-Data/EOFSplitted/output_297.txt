@@ -1,0 +1,26 @@
+
+
+Validate a digital signature.
+
+USAGE
+  $ sfdx plugins trust verify -n <value> [--json] [-r <value>]
+
+FLAGS
+  -n, --npm=<value>       (required) Specify the npm name. This can include a
+                          tag/version.
+  -r, --registry=<value>  The registry name. The behavior is the same as npm.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Validate a digital signature.
+
+  Verifies the digital signature on an npm package matches the signature and key
+  stored at the expected URLs.
+
+EXAMPLES
+  $ sfdx plugins trust verify --npm @scope/npmName --registry http://my.repo.org:4874
+
+  $ sfdx plugins trust verify --npm @scope/npmName
+

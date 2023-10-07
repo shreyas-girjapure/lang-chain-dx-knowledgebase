@@ -1,0 +1,35 @@
+
+
+Generate a new sf hook.
+
+USAGE
+  $ sfdx dev generate hook --event
+    sf:env:list|sf:env:display|sf:deploy|sf:logout [--force]
+
+FLAGS
+  --event=<option>  (required) Event to run hook on. Use colons to separate
+                    topic and command names of the event.
+                    <options: sf:env:list|sf:env:display|sf:deploy|sf:logout>
+  --force           Overwrite existing files.
+
+DESCRIPTION
+  Generate a new sf hook.
+
+  You must run this command from within a plugin directory, such as the
+  directory created with the "sf dev generate plugin" command.
+
+  The command generates a basic Typescript source file in the "src/hooks"
+  directory to get you started. The source file's name is based on the event
+  you're hooking into, such as envList.ts for the "sf env list" command.
+
+  The command updates the package.json file, so if it detects conflicts with the
+  existing file, you're prompted whether you want to overwrite the file. There
+  are a number of package.json updates required for a new hook, so we recommend
+  you answer "y" so the command takes care of them all. If you answer "n", you
+  must update the package.json file manually.
+
+EXAMPLES
+  Generate source file for a hook into the "sf env display" command:
+
+    $ sfdx dev generate hook --event sf:env:display
+

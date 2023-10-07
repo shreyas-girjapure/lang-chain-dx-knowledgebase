@@ -1,0 +1,63 @@
+
+
+The "force mdapi retrieve report" command has been deprecated.
+Check the status of a metadata retrieval.
+
+USAGE
+  $ sfdx force mdapi retrieve report -o <value> [--json] [--api-version <value>] [-r
+    <value>] [-i <value>] [-n <value>] [-z] [-w <value>] [--verbose]
+
+FLAGS
+  -i, --jobid=<value>              Job ID of the retrieve you want to check;
+                                   defaults to your most recent CLI retrieval.
+  -n, --zipfilename=<value>        File name to use for the retrieved zip file.
+  -o, --target-org=<value>         (required) Username or alias of the target
+                                   org.
+  -r, --retrievetargetdir=<value>  Root of the directory structure where the
+                                   retrieved .zip or metadata files are
+                                   retrieved.
+  -w, --wait=<value>               [default: 1440 minutes] Number of minutes to
+                                   wait for the command to complete.
+  -z, --unzip                      Extract all files from the retrieved zip
+                                   file.
+  --api-version=<value>            Override the api version used for api
+                                   requests made by this command
+  --verbose                        Display verbose output of retrieve result.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Check the status of a metadata retrieval.
+
+  Specify the job ID and a target directory for the retrieve you want to check.
+  You can also specify a wait time (minutes) to check for updates to the
+  retrieve status. If the retrieve was successful, the resulting zip file will
+  be saved to the location passed in with the retrieve target parameter.
+
+EXAMPLES
+  Poll until the metadata is retrieved (or timeout is reached) using data from
+  the last force:mdapi:retrieve command:
+
+    $ sfdx force mdapi retrieve report
+
+  Report the current status of the last retrieve command. If the retrieve is
+  complete the zip file of metadata is written to the target directoy:
+
+    $ sfdx force mdapi retrieve report --retrievetargetdir \
+      path/to/retrieve/dir --wait 0
+
+  Poll until the metadata is retrieved (or timeout is reached) using the
+  provided RetrieveID, naming the zip file and extracting all contents:
+
+    $ sfdx force mdapi retrieve report -i retrieveId --retrievetargetdir \
+      path/to/retrieve/dir --unzip --zipfilename apexClasses.zip
+
+FLAG DESCRIPTIONS
+  -i, --jobid=<value>
+
+    Job ID of the retrieve you want to check; defaults to your most recent CLI
+    retrieval.
+
+    You must specify a --retrievetargetdir. Use with --wait to resume waiting
+

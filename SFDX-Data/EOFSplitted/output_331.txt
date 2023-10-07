@@ -1,0 +1,48 @@
+
+
+Display the metadata for a standard or custom object or a Tooling API object.
+
+USAGE
+  $ sfdx sobject describe -o <value> -s <value> [--json] [--api-version
+    <value>] [-t]
+
+FLAGS
+  -o, --target-org=<value>  (required) Username or alias of the target org.
+  -s, --sobject=<value>     (required) API name of the object to describe.
+  -t, --use-tooling-api     Use Tooling API to display metadata for Tooling API
+                            objects.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Display the metadata for a standard or custom object or a Tooling API object.
+
+  The metadata is displayed in JSON format. See this topic for a description of
+  each property: https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/
+  sforce_api_calls_describesobjects_describesobjectresult.htm.
+
+  This command displays metadata for Salesforce objects by default. Use the
+  --use-tooling-api flag to view metadata for a Tooling API object.
+
+ALIASES
+  $ sfdx force schema sobject describe
+
+EXAMPLES
+  Display the metadata of the "Account" standard object in your default org:
+
+    $ sfdx sobject describe --sobject Account
+
+  Display the metadata of the "MyObject__c" custom object in the org with
+  alias "my-scratch-org":
+
+    $ sfdx sobject describe --sobject MyObject__c --target-org \
+      my-scratch-org
+
+  Display the metadata of the ApexCodeCoverage Tooling API object in your
+  default org:
+
+    $ sfdx sobject describe --sobject ApexCodeCoverage --use-tooling-api
+

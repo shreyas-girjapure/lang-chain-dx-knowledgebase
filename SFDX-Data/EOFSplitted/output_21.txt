@@ -1,0 +1,70 @@
+
+
+Generate a new custom metadata type in the current project.
+
+USAGE
+  $ sfdx cmdt create -n <value> [--json] [-l <value>] [-p <value>] [-v
+    PackageProtected|Protected|Public] [-d <value>]
+
+FLAGS
+  -d, --output-directory=<value>  Directory to store the newly-created custom
+                                  metadata type files
+  -l, --label=<value>             Label for the custom metadata type.
+  -n, --type-name=<value>         (required) Unique object name for the custom
+                                  metadata type.
+  -p, --plural-label=<value>      Plural version of the label value; if blank,
+                                  uses label.
+  -v, --visibility=<option>       [default: Public] Who can see the custom
+                                  metadata type.
+                                  <options: PackageProtected|Protected|Public>
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Generate a new custom metadata type in the current project.
+
+  This command creates a metadata file that describes the new custom metadata
+  type. By default, the file is created in the MyCustomType__mdt directory in
+  the current directory, where MyCustomType is the value of the required
+  --type-name flag. Use the --output-directory to generate the file in a package
+  directory with other custom metadata types, such as
+  "force-app/main/default/objects".
+
+ALIASES
+  $ sfdx force cmdt create
+  $ sfdx cmdt create
+
+EXAMPLES
+  Generate a custom metadata type with developer name 'MyCustomType'; this
+  name is also used as the label:
+
+    $ sfdx cmdt create --type-name MyCustomType
+
+  Generate a protected custom metadata type with a specific label:
+
+    $ sfdx cmdt create --type-name MyCustomType --label "Custom Type" \
+      --plural-label "Custom Types" --visibility Protected
+
+FLAG DESCRIPTIONS
+  -d, --output-directory=<value>
+
+    Directory to store the newly-created custom metadata type files
+
+    The location can be an absolute path or relative to the current working
+    directory. The default is the current directory.
+
+  -n, --type-name=<value>  Unique object name for the custom metadata type.
+
+    The name can contain only underscores and alphanumeric characters, and must
+    be unique in your org. It must begin with a letter, not include spaces, not
+    end with an underscore, and not contain two consecutive underscores.
+
+  -v, --visibility=PackageProtected|Protected|Public
+
+    Who can see the custom metadata type.
+
+    For more information on what each option means, see this topic in Salesforce
+    Help: https://help.salesforce.com/s/articleView?id=sf.custommetadatatypes_ui
+    _create.htm&type=5
+

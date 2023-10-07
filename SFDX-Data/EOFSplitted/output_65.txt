@@ -1,0 +1,36 @@
+
+
+Generate a flag for an existing command.
+
+USAGE
+  $ sfdx dev generate flag [-d]
+
+FLAGS
+  -d, --dry-run  Print new flag code instead of adding it to the command file.
+
+DESCRIPTION
+  Generate a flag for an existing command.
+
+  You must run this command from within a plugin directory, such as the
+  directory created with the "sf dev generate plugin" command.
+
+  This command is interactive. It first discovers all the commands currently
+  implemented in the plugin, and asks you which you want to create a new flag
+  for. It then prompts for other flag properties, such as its long name,
+  optional short name, type, whether it's required, and so on. Long flag names
+  must be kebab-case and not camelCase. The command doesn't let you use an
+  existing long or short flag name. When the command completes, the Typescript
+  file for the command is updated with the code for the new flag.
+
+  Use the --dry-run flag to review new code for the command file without
+  actually udpating it.
+
+EXAMPLES
+  Generate a new flag and update the command file:
+
+    $ sfdx dev generate flag
+
+  Don't actually update the command file, just view the generated code:
+
+    $ sfdx dev generate flag --dry-run
+

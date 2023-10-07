@@ -1,0 +1,49 @@
+
+
+The "force org clone" command has been deprecated and will be removed in version 60.0. Use "org:create:sandbox" instead.
+Clone a sandbox org.
+
+USAGE
+  $ sfdx force org clone -o <value> -t sandbox [--json] [--api-version
+    <value>] [-f <value>] [-s] [-a <value>] [-w <value>]
+
+FLAGS
+  -a, --setalias=<value>        Alias for the cloned org.
+  -f, --definitionfile=<value>  Path to the sandbox definition file.
+  -o, --target-org=<value>      (required) Username or alias of the target org.
+  -s, --setdefaultusername      Set the cloned org as your default.
+  -t, --type=<option>           (required) Type of org to create.
+                                <options: sandbox>
+  -w, --wait=<value>            [default: 6 minutes] Number of minutes to wait
+                                while polling for status.
+  --api-version=<value>         Override the api version used for api requests
+                                made by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Clone a sandbox org.
+
+  There are two ways to clone a sandbox: either specify a sandbox definition
+  file or provide key=value pairs at the command line. Key-value pairs at the
+  command-line override their equivalent sandbox definition file values. In
+  either case, you must specify both the "SandboxName" and "SourceSandboxName"
+  options to set the names of the new sandbox and the one being cloned,
+  respectively.
+
+  Set the --targetusername (-u) parameter to a production org with sandbox
+  licenses. The --type (-t) parameter is required and must be set to "sandbox".
+
+EXAMPLES
+  $ sfdx force org clone -t sandbox -f config/dev-sandbox-def.json -u prodOrg -a MyDevSandbox
+
+  $ sfdx force org clone -t sandbox SandboxName=NewClonedSandbox SourceSandboxName=ExistingSandbox -u prodOrg -a MyDevSandbox
+
+FLAG DESCRIPTIONS
+  -w, --wait=<value>  Number of minutes to wait while polling for status.
+
+    Sets the streaming client socket timeout, in minutes. If the streaming
+    client socket has no contact from the server for a number of minutes, the
+    client exits. Specify a longer wait time if timeouts occur frequently
+

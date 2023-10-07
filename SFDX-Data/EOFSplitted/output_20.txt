@@ -1,0 +1,27 @@
+
+
+display autocomplete installation instructions
+
+USAGE
+  $ sfdx autocomplete [SHELL] [-r]
+
+ARGUMENTS
+  SHELL  (zsh|bash|powershell) Shell type
+
+FLAGS
+  -r, --refresh-cache  Refresh cache (ignores displaying instructions)
+
+DESCRIPTION
+  display autocomplete installation instructions
+
+EXAMPLES
+  $ sfdx autocomplete
+
+  $ sfdx autocomplete bash
+
+  $ sfdx autocomplete zsh
+
+  $ sfdx autocomplete powershell
+
+  $ sfdx autocomplete --refresh-cache
+

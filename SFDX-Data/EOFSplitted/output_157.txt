@@ -1,0 +1,35 @@
+
+
+Display details about a first-generation package version.
+
+USAGE
+  $ sfdx package1 version display -o <value> -i <value> [--json] [--api-version
+    <value>]
+
+FLAGS
+  -i, --package-version-id=<value>  (required) ID (starts with 04t) of the
+                                    metadata package version whose details you
+                                    want to display.
+  -o, --target-org=<value>          (required) Username or alias of the target
+                                    org.
+  --api-version=<value>             Override the api version used for api
+                                    requests made by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+ALIASES
+  $ sfdx force package1 beta version display
+  $ sfdx force package1 version display
+
+EXAMPLES
+  Display details about the first-generation package version with the
+  specified ID in your default org:
+
+    $ sfdx package1 version display --package-version-id 04t...
+
+  Same as previous example, but use the specified org:
+
+    $ sfdx package1 version display --package-version-id 04t... --target-org \
+      myorg@example.com
+

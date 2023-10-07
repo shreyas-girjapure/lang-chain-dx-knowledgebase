@@ -1,0 +1,46 @@
+
+
+Display information about an org.
+
+USAGE
+  $ sfdx org display -o <value> [--json] [--api-version <value>]
+    [--verbose]
+
+FLAGS
+  -o, --target-org=<value>  (required) Username or alias of the target org.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+  --verbose                 Display the sfdxAuthUrl property.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Display information about an org.
+
+  Output includes your access token, client Id, connected status, org ID,
+  instance URL, username, and alias, if applicable.
+
+  Use --verbose to include the SFDX auth URL. WARNING: The SFDX auth URL
+  contains sensitive information, such as a refresh token that can be used to
+  access an org. Don't share or distribute this URL or token.
+
+  Including --verbose displays the sfdxAuthUrl property only if you
+  authenticated to the org using auth:web:login (not auth:jwt:grant).
+
+ALIASES
+  $ sfdx force org display
+
+EXAMPLES
+  Display information about your default org:
+
+    $ sfdx org display
+
+  Display information, including the sfdxAuthUrl property, about the org with
+  alias TestOrg1:
+
+    $ sfdx org display --target-org TestOrg1 --verbose
+
+COMMANDS
+  org display user  Display information about a Salesforce user
+

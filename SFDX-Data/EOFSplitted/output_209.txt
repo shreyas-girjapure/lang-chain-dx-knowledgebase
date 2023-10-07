@@ -1,0 +1,32 @@
+
+
+We plan to deprecate this command in the future. Try using the "project retrieve/deploy preview" command instead.
+List changes that have been made locally, in an org, or both.
+
+USAGE
+  $ sfdx force source status -o <value> [--json] [--api-version <value>] [-l |
+    -r] [--concise]
+
+FLAGS
+  -l, --local               List the changes that have been made locally.
+  -o, --target-org=<value>  (required) Username or alias of the target org.
+  -r, --remote              List the changes that have been made in the org.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+  --concise                 Show only the changes that will be pushed or pulled;
+                            omits files that are forceignored.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+EXAMPLES
+  List changes that have been made locally but not in the org with alias
+  "myscratch":
+
+    $ sfdx force source status --local --target-org myscratch
+
+  List changes that have been made in your default org but aren't reflected in
+  your local project:
+
+    $ sfdx force source status --remote
+

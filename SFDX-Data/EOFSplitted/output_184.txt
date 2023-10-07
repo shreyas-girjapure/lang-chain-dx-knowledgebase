@@ -1,0 +1,33 @@
+
+
+Retrieve the status of a package uninstall request.
+
+USAGE
+  $ sfdx package uninstall report -o <value> -i <value> [--json] [--api-version
+    <value>]
+
+FLAGS
+  -i, --request-id=<value>  (required) ID of the package uninstall request you
+                            want to check; starts with 06y.
+  -o, --target-org=<value>  (required) Username or alias of the target org.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+ALIASES
+  $ sfdx force package beta uninstall report
+  $ sfdx force package uninstall report
+
+EXAMPLES
+  Retrieve the status of a package uninstall in your default org using the
+  specified request ID:
+
+    $ sfdx package uninstall report --request-id 06y...
+
+  Similar to previous example, but use the org with username me@example.com:
+
+    $ sfdx package uninstall report --request-id 06y... --target-org \
+      me@example.com
+

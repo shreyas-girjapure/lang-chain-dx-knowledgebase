@@ -1,0 +1,56 @@
+
+
+Bulk upsert records to an org from a CSV file. Uses Bulk API 2.0.
+
+USAGE
+  $ sfdx data upsert bulk -o <value> -f <value> -s <value> -i <value> [--json]
+    [--api-version <value>] [-w <value> | -a]
+
+FLAGS
+  -a, --async                Run the command asynchronously.
+  -f, --file=<value>         (required) CSV file that contains the IDs of the
+                             records to delete.
+  -i, --external-id=<value>  (required) Name of the external ID field, or the Id
+                             field.
+  -o, --target-org=<value>   (required) Org alias or username to use for the
+                             target org.
+  -s, --sobject=<value>      (required) API name of the Salesforce object,
+                             either standard or custom, that you want to delete
+                             records from.
+  -w, --wait=<value>         [default: 0 minutes] Number of minutes to wait for
+                             the command to complete before displaying the
+                             results.
+  --api-version=<value>      Override the api version used for api requests made
+                             by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Bulk upsert records to an org from a CSV file. Uses Bulk API 2.0.
+
+  An upsert refers to inserting a record into a Salesforce object if the record
+  doesn't already exist, or updating it if it does exist.
+
+  When you execute this command, it starts a job, displays the ID, and then
+  immediately returns control of the terminal to you by default. If you prefer
+  to wait, set the --wait flag to the number of minutes; if it times out, the
+  command outputs the IDs. Use the job and batch IDs to check the status of the
+  job with the "sfdx data upsert resume" command.
+
+  See "Prepare CSV Files" in the Bulk API Developer Guide for details on
+  formatting your CSV file. (https://developer.salesforce.com/docs/atlas.en-us.a
+  pi_asynch.meta/api_asynch/datafiles_prepare_csv.htm)
+
+EXAMPLES
+  Bulk upsert records to the Contact object in your default org:
+
+    $ sfdx data upsert bulk --sobject Contact --file files/contacts.csv \
+      --external-id Id
+
+  Bulk upsert records to a custom object in an org with alias my-scratch and
+  wait 5 minutes for the command to complete:
+
+    $ sfdx data upsert bulk --sobject MyObject**c --file files/file.csv \
+      --external-id MyField**c --wait 5 --target-org my-scratch
+

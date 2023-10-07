@@ -1,0 +1,47 @@
+
+
+Resume the creation of an incomplete scratch org.
+
+USAGE
+  $ sfdx org resume scratch [--json] [-i <value>] [-r]
+
+FLAGS
+  -i, --job-id=<value>   Job ID of the incomplete scratch org create that you
+                         want to resume.
+  -r, --use-most-recent  Use the job ID of the most recent incomplete scratch
+                         org.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Resume the creation of an incomplete scratch org.
+
+  When the original "sfdx org create scratch" command either times out or is run
+  with the --async flag, it displays a job ID.
+
+  Run this command by either passing it a job ID or using the --use-most-recent
+  flag to specify the most recent incomplete scratch org.
+
+ALIASES
+  $ sfdx env resume scratch
+
+EXAMPLES
+  Resume a scratch org create with a job ID:
+
+    $ sfdx org resume scratch --job-id 2SR3u0000008fBDGAY
+
+  Resume your most recent incomplete scratch org:
+
+    $ sfdx org resume scratch --use-most-recent
+
+FLAG DESCRIPTIONS
+  -i, --job-id=<value>
+
+    Job ID of the incomplete scratch org create that you want to resume.
+
+    The job ID is the same as the record ID of the incomplete scratch org in the
+    ScratchOrgInfo object of the Dev Hub.
+
+    The job ID is valid for 24 hours after you start the scratch org creation
+

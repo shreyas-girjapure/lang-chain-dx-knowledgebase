@@ -1,0 +1,35 @@
+
+
+List all Salesforce objects of a specified category.
+
+USAGE
+  $ sfdx sobject list -o <value> [--json] [--api-version <value>] [-s
+    <value>]
+
+FLAGS
+  -o, --target-org=<value>  (required) Username or alias of the target org.
+  -s, --sobject=<value>     [default: ALL] Category of objects to list.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  List all Salesforce objects of a specified category.
+
+  You can list the standard objects, custom objects, or all. The lists include
+  only Salesforce objects, not Tooling API objects.
+
+ALIASES
+  $ sfdx force schema sobject list
+
+EXAMPLES
+  List all objects in your default org:
+
+    $ sfdx sobject list --sobject all
+
+  List only custom objects in the org with alias "my-scratch-org":
+
+    $ sfdx sobject list --sobject custom --target-org my-scratch-org
+

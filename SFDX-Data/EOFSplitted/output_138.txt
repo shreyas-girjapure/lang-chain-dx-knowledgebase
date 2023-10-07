@@ -1,0 +1,55 @@
+
+
+The force:org:create command has been replaced. Try org:create:scratch or org:create:sandbox.
+Create a scratch org or sandbox.
+
+USAGE
+  $ sfdx force org create [--json] [-o <value>] [-v <value>] [--api-version
+    <value>] [-t scratch|sandbox] [-f <value>] [-n] [-c] [-i <value>] [-s] [-a
+    <value>] [-w <value>] [-d <value>]
+
+FLAGS
+  -a, --setalias=<value>        Alias for the created org.
+  -c, --noancestors             Do not include second-generation package
+                                ancestors in the scratch org.
+  -d, --durationdays=<value>    [default: 7] Duration of the scratch org (in
+                                days) (default:7, min:1, max:30).
+  -f, --definitionfile=<value>  Path to an org definition file.
+  -i, --clientid=<value>        Connected app consumer key; not supported for
+                                sandbox org creation.
+  -n, --nonamespace             Create the scratch org with no namespace.
+  -o, --target-org=<value>      Username or alias of the production org that
+                                contains the sandbox license.
+  -s, --setdefaultusername      Set the created org as the default username.
+  -t, --type=<option>           [default: scratch] Type of org to create.
+                                <options: scratch|sandbox>
+  -v, --target-dev-hub=<value>  Username or alias of the Dev Hub org.
+  -w, --wait=<value>            [default: 6 minutes] Streaming client socket
+                                timeout (in minutes).
+  --api-version=<value>         Override the api version used for api requests
+                                made by this command
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Create a scratch org or sandbox.
+
+  Creates a scratch org or a sandbox org using the values specified in a
+  configuration file or key=value pairs that you specify on the command line.
+  Values specified on the command line override values in the configuration
+  file. Specify a configuration file or provide key=value pairs while creating a
+  scratch org or a sandbox. When creating scratch orgs, —targetdevhubusername
+  (-v) must be a Dev Hub org. When creating sandboxes, the --targetusername (-u)
+  must be a production org with sandbox licenses. The —type (-t) is required if
+  creating a sandbox.
+
+EXAMPLES
+  $ sfdx force org create -f config/enterprise-scratch-def.json -a MyScratchOrg
+
+  $ sfdx force org create edition=Developer -a MyScratchOrg -s -v devHub
+
+  $ sfdx force org create -f config/enterprise-scratch-def.json -a ScratchOrgWithOverrides username=testuser1@mycompany.org
+
+  $ sfdx force org create -t sandbox -f config/dev-sandbox-def.json -a MyDevSandbox -u prodOrg
+

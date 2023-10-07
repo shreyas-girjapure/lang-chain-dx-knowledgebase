@@ -1,0 +1,25 @@
+
+
+Run a hook. For testing purposes only.
+
+USAGE
+  $ sfdx dev hook HOOK [--json] [-p <value>]
+
+ARGUMENTS
+  HOOK  Name of hook to execute.
+
+FLAGS
+  -p, --plugin=<value>  Specific plugin from which to execute hook
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+EXAMPLES
+  Execute a hook by name:
+
+    $ sfdx dev hook sf:env:list
+
+  Execute a hook by name in a specific plugin:
+
+    $ sfdx dev hook sf:env:list --plugin env
+

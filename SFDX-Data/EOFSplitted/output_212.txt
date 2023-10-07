@@ -1,0 +1,65 @@
+
+
+Generate a static resource.
+
+USAGE
+  $ sfdx force staticresource create -n <value> [--json] [--type <value>] [-d <value>]
+    [--api-version <value>]
+
+FLAGS
+  -d, --output-dir=<value>  [default: .] Directory for saving the created files.
+  -n, --name=<value>        (required) Name of the generated static resource.
+  --api-version=<value>     Override the api version used for api requests made
+                            by this command
+  --type=<value>            [default: application/zip] Content type (mime type)
+                            of the generated static resource.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  Generate a static resource.
+
+  Generates the metadata resource file in the specified directory or the current
+  working directory. Static resource files must be contained in a parent
+  directory called "staticresources" in your package directory. Either run this
+  command from an existing directory of this name, or use the --output-dir flag
+  to create one or point to an existing one.
+
+ALIASES
+  $ sfdx force staticresource create
+
+EXAMPLES
+  Generate the metadata file for a static resource called MyResource in the
+  current directory:
+
+    $ sfdx force staticresource create --name MyResource
+
+  Similar to previous example, but specifies a MIME type of application/json:
+
+    $ sfdx force staticresource create --name MyResource --type \
+      application/json
+
+  Generate the resource file in the "force-app/main/default/staticresources"
+  directory:
+
+    $ sfdx force staticresource create --name MyResource --output-dir \
+      force-app/main/default/staticresources
+
+FLAG DESCRIPTIONS
+  -d, --output-dir=<value>  Directory for saving the created files.
+
+    The location can be an absolute path or relative to the current working
+    directory. The default is the current directory.
+
+  -n, --name=<value>  Name of the generated static resource.
+
+    This name can contain only underscores and alphanumeric characters, and must
+    be unique in your org. It must begin with a letter, not include spaces, not
+    end with an underscore, and not contain two consecutive underscores.
+
+  --type=<value>  Content type (mime type) of the generated static resource.
+
+    Must be a valid MIME type such as application/json, application/javascript,
+    application/zip, text/plain, text/css, etc
+
